@@ -569,7 +569,7 @@
         <span>Estilo y elegancia en cada paso</span>
       </div>
     </div>
-    <button class="cart-btn" onclick="toggleCart(true)">
+    <button type="button" class="cart-btn" onclick="toggleCart(true)">
       Carrito (<span id="cart-count">0</span>)
     </button>
   </header>
@@ -599,7 +599,7 @@
     <aside class="drawer">
       <div class="drawer-top">
         <h2>Tu Pedido</h2>
-        <button class="close-btn" onclick="toggleCart(false)">X</button>
+        <button type="button" class="close-btn" onclick="toggleCart(false)">X</button>
       </div>
       <div id="cart-items"></div>
       <div class="summary-box">
@@ -607,7 +607,7 @@
           <span>Subtotal</span>
           <span id="cart-subtotal">$0</span>
         </div>
-        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
+        <button type="button" class="checkout-btn" onclick="sendWhatsAppOrder()">
           Pedir por WhatsApp
         </button>
       </div>
@@ -791,4 +791,164 @@
         </div>
         <div class="detail-col">
           <div class="card-brand">${product.brand}${product.promo ? " • PROMOCIÓN" : ""}</div>
-          <div class="deta
+          <div class="detail-name">${product.name}</div>
+          <div class="card-price">${formatCOP(product.price)}</div>
+          <p class="detail-text">${product.description || ""}</p>
+          <div class="detail-box">
+            <div><strong>Cómo está hecho:</strong> <span>${product.specs || ""}</span></div>
+            <div><strong>Materiales:</strong> <span>${product.materials || ""}</span></div>
+          </div>
+          <div class="sizes-label">Talla seleccionada: <strong>${currentSize}</strong></div>
+          <div class="sizes-list">${sizesHTML}</div>
+          <button type="button" class="add-btn" onclick="addToCart(${product.id}); closeDetailModal();">
+            Agregar al carrito
+          </button>
+        </div>
+      `;
+
+      document.getElementById("detail-modal").classList.add("open");
+    }
+
+    function closeDetailModal() {
+      document.getElementById("detail-modal").classList.remove("open");
+    }
+
+    function switchDetailPhoto(src, btn) {
+      const img = document.getElementById("detail-zoom-img");
+      if (img) {
+        img.style.display = "";
+        img.src = src;
+        img.style.transform = "scale(1)";
+        img.style.transformOrigin = "center center";
+      }
+      touchZoomActive = false;
+      const box = document.getElementById("zoom-box");
+      if (box) box.classList.remove("zoomed");
+      const thumbs = document.querySelectorAll(".thumb-item");
+      for (let i = 0; i < thumbs.length; i++) {
+        thumbs[i].classList.remove("active");
+      }
+      if (btn) btn.classList.add("active");
+    }
+
+    function applyZoomAt(clientX, clientY, scaleVal) {
+      const box = document.getElementById("zoom-box");
+      const img = document.getElementById("detail-zoom-img");
+      if (!box || !img) return;
+      const rect = box.getBoundingClientRect();
+      const x = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+      const y = Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100));
+      img.style.transformOrigin = `${x}% ${y}%`;
+      img.style.transform = `scale(${scaleVal})`;
+    }
+
+    function moveZoom(e) {
+      applyZoomAt(e.clientX, e.clientY, 2);
+    }
+
+    function leaveZoom() {
+      if (touchZoomActive) return;
+      const img = document.getElementById("detail-zoom-img");
+      if (!img) return;
+      img.style.transform = "scale(1)";
+      img.style.transformOrigin = "center center";
+    }
+
+    function toggleTouchZoom(e) {
+      const box = document.getElementById("zoom-box");
+      const img = document.getElementById("detail-zoom-img");
+      if (!box || !img) return;
+      touchZoomActive = !touchZoomActive;
+      if (touchZoomActive) {
+        box.classList.add("zoomed");
+        applyZoomAt(e.clientX, e.clientY, 2);
+      } else {
+        box.classList.remove("zoomed");
+        img.style.transform = "scale(1)";
+        img.style.transformOrigin = "center center";
+      }
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      const size = selectedSizes[productId] || product.sizes[0];
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        size: size
+      });
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById("cart-count");
+      const itemsEl = document.getElementById("cart-items");
+      const subtotalEl = document.getElementById("cart-subtotal");
+
+      countEl.textContent = cart.length;
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `<p style="color: var(--muted); font-size: 0.9rem;">Tu carrito está vacío.</p>`;
+        subtotalEl.textContent = "$0";
+        return;
+      }
+
+      let total = 0;
+      itemsEl.innerHTML = cart.map((item, idx) => {
+        total += item.price;
+        return `
+          <div class="cart-item">
+            <div>
+              <strong>${item.name}</strong><br />
+              <span style="color: var(--muted);">Talla ${item.size} • ${formatCOP(item.price)}</span>
+            </div>
+            <button type="button" class="remove-btn" onclick="removeFromCart(${idx})">Quitar</button>
+          </div>
+        `;
+      }).join("");
+
+      subtotalEl.textContent = formatCOP(total);
+    }
+
+    function toggleCart(open) {
+      const modal = document.getElementById("cart-modal");
+      if (open) {
+        modal.classList.add("open");
+      } else {
+        modal.classList.remove("open");
+      }
+    }
+
+    function sendWhatsAppOrder() {
+      if (cart.length === 0) {
+        alert("Agrega al menos una zapatilla al carrito.");
+        return;
+      }
+      let total = 0;
+      const lines = cart.map((item, i) => {
+        total += item.price;
+        return `${i + 1}. ${item.name} (Talla ${item.size}) - ${formatCOP(item.price)}`;
+      });
+
+      const message =
+        `Hola CalzadoClick, quiero hacer este pedido:\n\n` +
+        lines.join("\n") +
+        `\n\nTotal: ${formatCOP(total)}`;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+
+    updateCartUI();
+    renderCatalog();
+  </script>
+</body>
+</html>
