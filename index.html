@@ -47,7 +47,7 @@
     header {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 18px 20px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -62,21 +62,21 @@
     }
 
     .brand img {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid var(--border);
     }
 
     .brand h1 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: 0.6px;
     }
 
     .brand span {
       display: block;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--muted);
     }
 
@@ -98,44 +98,51 @@
     .hero {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 32px 20px 18px;
+      padding: 20px 20px 10px;
       text-align: center;
     }
 
     .hero h2 {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
+      font-size: 1.65rem;
+      margin-bottom: 4px;
     }
 
     .hero p {
       color: var(--muted);
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
-      font-size: 0.96rem;
+      font-size: 0.9rem;
+    }
+
+    .toolbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 10px 20px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
 
     .filters-wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 10px 20px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .filters-wrap.size-row {
-      padding-top: 2px;
-      padding-bottom: 22px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      max-width: 100%;
     }
 
     .filter-btn {
+      flex: 0 0 auto;
       background: var(--surface);
       color: var(--muted);
       border: 1px solid var(--border);
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -150,6 +157,34 @@
       background: var(--purple);
       border-color: var(--purple-bright);
       color: #fff;
+    }
+
+    .size-select-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .size-select {
+      background: transparent;
+      color: var(--text);
+      border: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+      padding: 3px 4px;
+    }
+
+    .size-select option {
+      background: var(--surface);
+      color: var(--text);
     }
 
     .grid {
@@ -581,30 +616,35 @@
 
   <section class="hero">
     <h2>Catálogo de Zapatillas</h2>
-    <p>Elige tu marca favorita o tu talla, selecciona tu par y haz tu pedido directo por WhatsApp.</p>
+    <p>Filtra por marca o talla, elige tu par y haz tu pedido directo por WhatsApp.</p>
   </section>
 
-  <div class="filters-wrap" id="filters">
-    <button type="button" class="filter-btn active" onclick="setBrandFilter('Todas', this)">Todas</button>
-    <button type="button" class="filter-btn" onclick="setBrandFilter('PROMOCIONES', this)">PROMOCIONES</button>
-    <button type="button" class="filter-btn" onclick="setBrandFilter('Nike', this)">Nike</button>
-    <button type="button" class="filter-btn" onclick="setBrandFilter('Jordan', this)">Jordan</button>
-    <button type="button" class="filter-btn" onclick="setBrandFilter('Adidas', this)">Adidas</button>
-    <button type="button" class="filter-btn" onclick="setBrandFilter('Puma', this)">Puma</button>
-    <button type="button" class="filter-btn" onclick="setBrandFilter('Reebok', this)">Reebok</button>
-  </div>
+  <div class="toolbar">
+    <div class="filters-wrap" id="filters" aria-label="Filtrar por marca">
+      <button type="button" class="filter-btn active" onclick="setBrandFilter('Todas', this)">Todas</button>
+      <button type="button" class="filter-btn" onclick="setBrandFilter('PROMOCIONES', this)">PROMOCIONES</button>
+      <button type="button" class="filter-btn" onclick="setBrandFilter('Nike', this)">Nike</button>
+      <button type="button" class="filter-btn" onclick="setBrandFilter('Jordan', this)">Jordan</button>
+      <button type="button" class="filter-btn" onclick="setBrandFilter('Adidas', this)">Adidas</button>
+      <button type="button" class="filter-btn" onclick="setBrandFilter('Puma', this)">Puma</button>
+      <button type="button" class="filter-btn" onclick="setBrandFilter('Reebok', this)">Reebok</button>
+    </div>
 
-  <div class="filters-wrap size-row" id="size-filters" aria-label="Filtrar por talla">
-    <button type="button" class="filter-btn active" onclick="setSizeFilter('Todas', this)">Todas las tallas</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('36', this)">Talla 36</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('37', this)">Talla 37</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('38', this)">Talla 38</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('39', this)">Talla 39</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('40', this)">Talla 40</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('41', this)">Talla 41</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('42', this)">Talla 42</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('43', this)">Talla 43</button>
-    <button type="button" class="filter-btn" onclick="setSizeFilter('44', this)">Talla 44</button>
+    <label class="size-select-wrap" for="size-select">
+      <span>Talla:</span>
+      <select id="size-select" class="size-select" onchange="setSizeFilter(this.value)">
+        <option value="Todas">Todas (36–44)</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+      </select>
+    </label>
   </div>
 
   <main class="grid" id="catalog"></main>
@@ -730,15 +770,8 @@
       renderCatalog();
     }
 
-    function setSizeFilter(size, btnEl) {
+    function setSizeFilter(size) {
       selectedSizeFilter = size;
-      const sizeBtns = document.querySelectorAll("#size-filters .filter-btn");
-      for (let i = 0; i < sizeBtns.length; i++) {
-        sizeBtns[i].classList.remove("active");
-      }
-      if (btnEl) {
-        btnEl.classList.add("active");
-      }
       if (size !== "Todas") {
         PRODUCTS.forEach(p => {
           if (Array.isArray(p.sizes) && p.sizes.includes(size)) {
