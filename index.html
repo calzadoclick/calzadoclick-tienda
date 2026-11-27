@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calzado Click — Tienda de Zapatillas</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #181b22;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --border: #272c38;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.5; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(15, 17, 21, 0.92); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 1.25rem; font-weight: bold; letter-spacing: 0.5px; }
+    .logo span { color: var(--accent); }
+    .cart-btn {
+      background: var(--accent); color: #052e16; border: none;
+      padding: 10px 16px; border-radius: 8px; font-weight: bold; cursor: pointer;
+    }
+    .hero {
+      padding: 36px 20px; text-align: center; max-width: 780px; margin: 0 auto;
+    }
+    .hero h1 { font-size: 2rem; margin-bottom: 10px; }
+    .hero p { color: var(--muted); }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px; max-width: 1100px; margin: 0 auto 50px; padding: 0 20px;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+    }
+    .img-box {
+      background: #222733; border-radius: 8px; height: 170px;
+      display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem;
+    }
+    .price { font-size: 1.15rem; font-weight: bold; color: var(--accent); }
+    select, input {
+      width: 100%; padding: 9px 10px; border-radius: 8px;
+      border: 1px solid var(--border); background: #101318; color: var(--text);
+    }
+    .add-btn {
+      width: 100%; padding: 10px; border-radius: 8px; border: none;
+      background: #ffffff; color: #0f1115; font-weight: bold; cursor: pointer;
+    }
+    .add-btn:hover { background: #e5e7eb; }
+
+    /* Modal Carrito */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+      display: none; justify-content: flex-end; z-index: 40;
+    }
+    .modal-backdrop.open { display: flex; }
+    .drawer {
+      background: var(--card); width: 100%; max-width: 420px; height: 100%;
+      padding: 20px; overflow-y: auto; border-left: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .drawer-top { display: flex; justify-content: space-between; align-items: center; }
+    .close-btn { background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+    .cart-item {
+      background: #101318; border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    }
+    .remove-btn {
+      background: #ef4444; color: #fff; border: none; border-radius: 6px;
+      padding: 4px 8px; cursor: pointer; font-size: 0.8rem;
+    }
+    .pay-box {
+      background: #101318; border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px; font-size: 0.9rem; color: var(--muted);
+    }
+    .pay-box strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .wa-order-btn {
+      width: 100%; padding: 12px; border-radius: 8px; border: none;
+      background: var(--accent); color: #052e16; font-weight: bold; font-size: 1rem; cursor: pointer;
+    }
+    .wa-order-btn:hover { background: var(--accent-dark); color: #fff; }
+
+    /* Boton flotante WhatsApp */
+    .wa-float {
+      position: fixed; bottom: 20px; right: 20px; z-index: 30;
+      background: #25d366; color: #052e16; text-decoration: none;
+      padding: 12px 16px; border-radius: 999px; font-weight: bold;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">CALZADO <span>CLICK</span></div>
+    <button class="cart-btn" onclick="toggleCart(true)">Carrito (<span id="cart-count">0</span>)</button>
+  </header>
+
+  <section class="hero">
+    <h1>Tu estilo empieza en cada paso</h1>
+    <p>Paga fácil por Nequi, DaviPlata, Llave Bre-B, PSE o Addi y confirma tu pedido directo por WhatsApp.</p>
+  </section>
+
+  <main class="grid" id="catalog"></main>
+
+  <div class="modal-backdrop" id="cart-modal" onclick="if(event.target === this) toggleCart(false)">
+    <aside class="drawer">
+      <div class="drawer-top">
+        <h2>Tu Pedido</h2>
+        <button class="close-btn" onclick="toggleCart(false)">✕</button>
+      </div>
+
+      <div id="cart-items"></div>
+      <div><strong>Total: <span id="cart-total">$0</span></strong></div>
+
+      <div>
+        <label for="customer-name">Tu nombre</label>
+        <input id="customer-name" type="text" placeholder="Ej. Andrés Gómez" />
+      </div>
+
+      <div>
+        <label for="payment-method">Método de pago</label>
+        <select id="payment-method" onchange="renderPaymentInfo()">
+          <option value="Nequi">Nequi</option>
+          <option value="DaviPlata">DaviPlata</option>
+          <option value="Llave Bre-B">Llave Bre-B</option>
+          <option value="PSE">PSE</option>
+          <option value="Addi">Addi</option>
+        </select>
+      </div>
+
+      <div class="pay-box" id="payment-info"></div>
+
+      <button class="wa-order-btn" onclick="sendOrderWhatsApp()">Enviar pedido por WhatsApp</button>
+    </aside>
+  </div>
+
+  <a class="wa-float" href="https://wa.me/573206466252?text=Hola%20Calzado%20Click%2C%20tengo%20una%20pregunta%20sobre%20las%20zapatillas." target="_blank" rel="noopener">
+    WhatsApp +57 320 646 6252
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "573206466252";
+
+    const PAYMENT_DETAILS = {
+      "Nequi": "Transfiere a Nequi: <strong>3147761605</strong> y envía el comprobante por WhatsApp.",
+      "DaviPlata": "Transfiere a DaviPlata: <strong>3147761605</strong> y envía el comprobante por WhatsApp.",
+      "Llave Bre-B": "Envía tu pago a la Llave Bre-B: <strong>@3147761605</strong> y comparte el comprobante por WhatsApp.",
+      "PSE": "Al enviar tu pedido por WhatsApp te compartiremos el enlace de pago <strong>PSE</strong>.",
+      "Addi": "Al enviar tu pedido por WhatsApp te compartiremos el enlace de compra a cuotas con <strong>Addi</strong>."
+    };
+
+    const PRODUCTS = [
+      { id: 1, name: "Runner Urbana Negra", price: 145000, sizes: ["37", "38", "39", "40", "41", "42"] },
+      { id: 2, name: "Classic Court Blanca", price: 160000, sizes: ["36", "37", "38", "39", "40", "41"] },
+      { id: 3, name: "Chunky Street Gris", price: 175000, sizes: ["38", "39", "40", "41", "42", "43"] }
+    ];
+
+    let cart = [];
+
+    function formatCOP(val) {
+      return new Intl.NumberFormat("es-CO", {
+        style: "currency", currency: "COP", maximumFractionDigits: 0
+      }).format(val);
+    }
+
+    function renderCatalog() {
+      const el = document.getElementById("catalog");
+      el.innerHTML = PRODUCTS.map(p => `
+        <article class="card">
+          <div class="img-box">Foto: ${p.name}</div>
+          <h3>${p.name}</h3>
+          <div class="price">${formatCOP(p.price)}</div>
+          <select id="size-${p.id}">
+            ${p.sizes.map(s => `<option value="${s}">Talla ${s}</option>`).join("")}
+          </select>
+          <button class="add-btn" onclick="addToCart(${p.id})">Agregar al carrito</button>
+        </article>
+      `).join("");
+    }
+
+    function addToCart(id) {
+      const product = PRODUCTS.find(p => p.id === id);
+      const size = document.getElementById(`size-${id}`).value;
+      const existing = cart.find(item => item.id === id && item.size === size);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: product.id, name: product.name, price: product.price, size, qty: 1 });
+      }
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((acc, item) => acc + item.qty, 0);
+      const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      document.getElementById("cart-count").textContent = count;
+      document.getElementById("cart-total").textContent = formatCOP(total);
+
+      const container = document.getElementById("cart-items");
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="color:#9ca3af;">Tu carrito está vacío.</p>`;
+        return;
+      }
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <div>
+            <div><strong>${item.name}</strong> (Talla ${item.size})</div>
+            <div style="color:#9ca3af;font-size:0.85rem;">${item.qty} x ${formatCOP(item.price)}</div>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${idx})">Quitar</button>
+        </div>
+      `).join("");
+    }
+
+    function renderPaymentInfo() {
+      const method = document.getElementById("payment-method").value;
+      document.getElementById("payment-info").innerHTML =
+        `<strong>Instrucciones de pago (${method}):</strong>${PAYMENT_DETAILS[method]}`;
+    }
+
+    function toggleCart(open) {
+      document.getElementById("cart-modal").classList.toggle("open", open);
+    }
+
+    function sendOrderWhatsApp() {
+      if (cart.length === 0) {
+        alert("Agrega al menos un par de zapatillas al carrito.");
+        return;
+      }
+      const name = document.getElementById("customer-name").value.trim() || "Cliente";
+      const method = document.getElementById("payment-method").value;
+      const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+      const lines = cart.map(item =>
+        `- ${item.qty}x ${item.name} (Talla ${item.size}): ${formatCOP(item.price * item.qty)}`
+      ).join("%0A");
+
+      const msg = `Hola Calzado Click! Soy *${encodeURIComponent(name)}* y quiero hacer este pedido:%0A%0A${lines}%0A%0A*Total:* ${encodeURIComponent(formatCOP(total))}%0A*Método de pago:* ${encodeURIComponent(method)}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank", "noopener");
+    }
+
+    renderCatalog();
+    updateCartUI();
+    renderPaymentInfo();
+  </script>
+</body>
+</html>
