@@ -117,11 +117,16 @@
     .filters-wrap {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 14px 20px 22px;
+      padding: 10px 20px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+    }
+
+    .filters-wrap.size-row {
+      padding-top: 2px;
+      padding-bottom: 22px;
     }
 
     .filter-btn {
@@ -576,7 +581,7 @@
 
   <section class="hero">
     <h2>Catálogo de Zapatillas</h2>
-    <p>Elige tu marca favorita, selecciona tu talla y haz tu pedido directo por WhatsApp.</p>
+    <p>Elige tu marca favorita o tu talla, selecciona tu par y haz tu pedido directo por WhatsApp.</p>
   </section>
 
   <div class="filters-wrap" id="filters">
@@ -587,6 +592,19 @@
     <button type="button" class="filter-btn" onclick="setBrandFilter('Adidas', this)">Adidas</button>
     <button type="button" class="filter-btn" onclick="setBrandFilter('Puma', this)">Puma</button>
     <button type="button" class="filter-btn" onclick="setBrandFilter('Reebok', this)">Reebok</button>
+  </div>
+
+  <div class="filters-wrap size-row" id="size-filters" aria-label="Filtrar por talla">
+    <button type="button" class="filter-btn active" onclick="setSizeFilter('Todas', this)">Todas las tallas</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('36', this)">Talla 36</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('37', this)">Talla 37</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('38', this)">Talla 38</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('39', this)">Talla 39</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('40', this)">Talla 40</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('41', this)">Talla 41</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('42', this)">Talla 42</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('43', this)">Talla 43</button>
+    <button type="button" class="filter-btn" onclick="setSizeFilter('44', this)">Talla 44</button>
   </div>
 
   <main class="grid" id="catalog"></main>
@@ -668,11 +686,12 @@
         ],
         description: "Zapatilla urbana en tono negro con detalle lateral estilo esqueleto, ideal para uso diario.",
         specs: "Confección de corte bajo, plantilla cómoda y suela con tracción firme.",
-        materials: "Capellada sintética y textil, forro interno suave y suela resistente."
+        materials: "Capellada sintética y textil, forro interno suave y suela de resistente."
       }
     ];
 
     let selectedBrand = "Todas";
+    let selectedSizeFilter = "Todas";
     let selectedSizes = {};
     let cart = [];
     let touchZoomActive = false;
@@ -688,14 +707,44 @@
       return product.image ? [product.image] : [];
     }
 
+    function getDefaultSizeForProduct(product) {
+      if (
+        selectedSizeFilter !== "Todas" &&
+        Array.isArray(product.sizes) &&
+        product.sizes.includes(selectedSizeFilter)
+      ) {
+        return selectedSizeFilter;
+      }
+      return product.sizes && product.sizes.length > 0 ? product.sizes[0] : "";
+    }
+
     function setBrandFilter(brand, btnEl) {
       selectedBrand = brand;
-      const allBtns = document.querySelectorAll(".filter-btn");
+      const allBtns = document.querySelectorAll("#filters .filter-btn");
       for (let i = 0; i < allBtns.length; i++) {
         allBtns[i].classList.remove("active");
       }
       if (btnEl) {
         btnEl.classList.add("active");
+      }
+      renderCatalog();
+    }
+
+    function setSizeFilter(size, btnEl) {
+      selectedSizeFilter = size;
+      const sizeBtns = document.querySelectorAll("#size-filters .filter-btn");
+      for (let i = 0; i < sizeBtns.length; i++) {
+        sizeBtns[i].classList.remove("active");
+      }
+      if (btnEl) {
+        btnEl.classList.add("active");
+      }
+      if (size !== "Todas") {
+        PRODUCTS.forEach(p => {
+          if (Array.isArray(p.sizes) && p.sizes.includes(size)) {
+            selectedSizes[p.id] = size;
+          }
+        });
       }
       renderCatalog();
     }
@@ -710,18 +759,30 @@
       if (!catalog) return;
 
       const filtered = PRODUCTS.filter(p => {
-        if (selectedBrand === "Todas") return true;
-        if (selectedBrand === "PROMOCIONES") return Boolean(p.promo);
-        return String(p.brand).toLowerCase() === String(selectedBrand).toLowerCase();
+        const matchesBrand =
+          selectedBrand === "Todas" ||
+          (selectedBrand === "PROMOCIONES" && Boolean(p.promo)) ||
+          String(p.brand).toLowerCase() === String(selectedBrand).toLowerCase();
+
+        const matchesSize =
+          selectedSizeFilter === "Todas" ||
+          (Array.isArray(p.sizes) && p.sizes.includes(selectedSizeFilter));
+
+        return matchesBrand && matchesSize;
       });
 
       if (filtered.length === 0) {
-        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos cargados en <strong>${selectedBrand}</strong>.</div>`;
+        const sizeLabel = selectedSizeFilter !== "Todas" ? ` en <strong>Talla ${selectedSizeFilter}</strong>` : "";
+        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos disponibles en <strong>${selectedBrand}</strong>${sizeLabel}.</div>`;
         return;
       }
 
       catalog.innerHTML = filtered.map(product => {
-        const currentSize = selectedSizes[product.id] || product.sizes[0];
+        const defaultSize = getDefaultSizeForProduct(product);
+        const currentSize = selectedSizes[product.id] && product.sizes.includes(selectedSizes[product.id])
+          ? selectedSizes[product.id]
+          : defaultSize;
+
         const photos = getProductPhotos(product);
         const firstPhoto = photos[0] || "";
 
@@ -765,7 +826,10 @@
       if (!product) return;
 
       touchZoomActive = false;
-      const currentSize = selectedSizes[product.id] || product.sizes[0];
+      const defaultSize = getDefaultSizeForProduct(product);
+      const currentSize = selectedSizes[product.id] && product.sizes.includes(selectedSizes[product.id])
+        ? selectedSizes[product.id]
+        : defaultSize;
       const photos = getProductPhotos(product);
 
       const mainImgHTML = photos.length > 0
@@ -889,7 +953,10 @@
     function addToCart(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
-      const size = selectedSizes[productId] || product.sizes[0];
+      const defaultSize = getDefaultSizeForProduct(product);
+      const size = selectedSizes[productId] && product.sizes.includes(selectedSizes[productId])
+        ? selectedSizes[productId]
+        : defaultSize;
       cart.push({
         id: product.id,
         name: product.name,
