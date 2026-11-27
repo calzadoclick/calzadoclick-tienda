@@ -296,7 +296,6 @@
       border-radius: 16px;
     }
 
-    /* Modal de detalle y zoom del producto */
     .detail-backdrop {
       position: fixed;
       inset: 0;
@@ -442,7 +441,6 @@
       color: var(--muted);
     }
 
-    /* Carrito modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -541,7 +539,6 @@
       font-size: 0.95rem;
     }
 
-    /* Botón flotante WhatsApp */
     .wa-float {
       position: fixed;
       right: 18px;
@@ -566,7 +563,7 @@
 
   <header>
     <div class="brand">
-      <img src="logo.jpeg" alt="Logo CalzadoClick" />
+      <img src="logo.jpeg" alt="Logo CalzadoClick" onerror="this.style.display='none'" />
       <div>
         <h1>CALZADOCLICK</h1>
         <span>Estilo y elegancia en cada paso</span>
@@ -629,8 +626,6 @@
   <script>
     const WHATSAPP_NUMBER = "573206466252";
 
-    // Edita brand ("Nike", "Jordan", "Adidas", "Puma", "Reebok"), promo (true/false),
-    // name, price, sizes, image, images (varias fotos), description, specs y materials
     const PRODUCTS = [
       {
         id: 1,
@@ -714,7 +709,7 @@
         const firstPhoto = photos[0] || "";
 
         const imageHTML = firstPhoto
-          ? `<img src="${firstPhoto}" alt="${product.name}" />`
+          ? `<img src="${firstPhoto}" alt="${product.name}" onerror="this.style.display='none'" />`
           : `<div class="no-img-placeholder">Foto próximamente</div>`;
 
         const promoBadge = product.promo ? `<span class="promo-tag">PROMO</span>` : "";
@@ -757,14 +752,14 @@
       const photos = getProductPhotos(product);
 
       const mainImgHTML = photos.length > 0
-        ? `<img id="detail-zoom-img" src="${photos[0]}" alt="${product.name}" />`
+        ? `<img id="detail-zoom-img" src="${photos[0]}" alt="${product.name}" onerror="this.style.display='none'" />`
         : `<div class="no-img-placeholder">Foto próximamente</div>`;
 
       const thumbsHTML = photos.length > 1
         ? `<div class="thumbs-bar">
             ${photos.map((src, idx) => `
               <button type="button" class="thumb-item ${idx === 0 ? "active" : ""}" onclick="switchDetailPhoto('${src}', this)">
-                <img src="${src}" alt="Foto ${idx + 1}" />
+                <img src="${src}" alt="Foto ${idx + 1}" onerror="this.parentElement.style.display='none'" />
               </button>
             `).join("")}
           </div>`
@@ -795,3 +790,5 @@
           ${thumbsHTML}
         </div>
         <div class="detail-col">
+          <div class="card-brand">${product.brand}${product.promo ? " • PROMOCIÓN" : ""}</div>
+          <div class="deta
