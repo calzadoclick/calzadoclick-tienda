@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CALZADOCLICK — Estilo y elegancia</title>
+  <title>CALZADOCLICK — Estilo, comodidad y envíos gratis a toda Colombia</title>
   <style>
     :root {
       --bg: #09070d;
       --surface: #120e1a;
-      --surface-2: #171222;
       --card: #181324;
-      --card-hover: #211933;
+      --card-hover: #201930;
       --text: #f5f3ff;
       --muted: #b4acc9;
       --purple: #9333ea;
@@ -18,7 +17,7 @@
       --purple-soft: rgba(168, 85, 247, 0.16);
       --border: #2e2444;
       --wa: #25d366;
-      --ok: #34d399;
+      --promo: #f43f5e;
     }
 
     * {
@@ -32,7 +31,7 @@
       background: radial-gradient(circle at top, #1b112e 0%, var(--bg) 55%);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 88px;
+      padding-bottom: 96px;
       min-height: 100vh;
     }
 
@@ -40,9 +39,9 @@
       background: linear-gradient(90deg, #6b21a8, var(--purple), #6b21a8);
       color: #fff;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       font-weight: 700;
-      padding: 8px 12px;
+      padding: 9px 12px;
       letter-spacing: 0.3px;
     }
 
@@ -64,8 +63,8 @@
     }
 
     .brand img {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid var(--border);
@@ -100,20 +99,8 @@
     .hero {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 32px 20px 14px;
+      padding: 30px 20px 14px;
       text-align: center;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--purple-soft);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      color: #e9d5ff;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 10px;
     }
 
     .hero h2 {
@@ -124,43 +111,77 @@
     .hero p {
       color: var(--muted);
       max-width: 660px;
-      margin: 0 auto 18px;
+      margin: 0 auto;
       font-size: 0.96rem;
     }
 
-    .trust-strip {
+    .trust-bar {
       max-width: 1180px;
-      margin: 0 auto 10px;
+      margin: 14px auto 6px;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 10px;
     }
 
     .trust-item {
-      background: rgba(18, 14, 26, 0.85);
+      background: rgba(24, 19, 36, 0.88);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 10px 14px;
-      font-size: 0.84rem;
+      padding: 11px 14px;
+      font-size: 0.82rem;
       color: var(--text);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .trust-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: var(--ok);
+      background: var(--purple-bright);
       flex-shrink: 0;
     }
 
-    .filters-wrap {
+    .trust-item strong {
+      display: block;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      font-size: 0.77rem;
+    }
+
+    .controls-wrap {
       max-width: 1180px;
       margin: 0 auto;
       padding: 16px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      max-width: 450px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--purple-bright);
+    }
+
+    .filters-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -190,6 +211,18 @@
       color: #fff;
     }
 
+    .filter-btn.promo-btn {
+      border-color: rgba(244, 63, 94, 0.55);
+      color: #fda4af;
+    }
+
+    .filter-btn.promo-btn.active,
+    .filter-btn.promo-btn:hover {
+      background: var(--promo);
+      border-color: var(--promo);
+      color: #fff;
+    }
+
     .grid {
       max-width: 1180px;
       margin: 0 auto;
@@ -210,15 +243,15 @@
     }
 
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       background: var(--card-hover);
-      border-color: rgba(168, 85, 247, 0.45);
+      border-color: var(--purple-bright);
     }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 225px;
+      height: 230px;
       background: #100c18;
       display: flex;
       align-items: center;
@@ -232,25 +265,39 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.35s ease;
     }
 
-    .card-img-wrap:hover img {
-      transform: scale(1.05);
+    .card:hover .card-img-wrap img {
+      transform: scale(1.06);
     }
 
-    .inspect-badge {
+    .badge-promo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--promo);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.4px;
+      z-index: 2;
+    }
+
+    .badge-zoom {
       position: absolute;
       bottom: 10px;
       right: 10px;
-      background: rgba(9, 7, 13, 0.82);
+      background: rgba(9, 7, 13, 0.84);
       border: 1px solid var(--border);
       color: #fff;
       font-size: 0.74rem;
-      font-weight: 700;
-      padding: 4px 9px;
+      font-weight: 600;
+      padding: 4px 10px;
       border-radius: 999px;
-      backdrop-filter: blur(4px);
+      z-index: 2;
     }
 
     .no-img-placeholder {
@@ -264,15 +311,8 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
       flex: 1;
-    }
-
-    .card-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
     }
 
     .card-brand {
@@ -283,15 +323,6 @@
       font-weight: 700;
     }
 
-    .card-fit {
-      font-size: 0.72rem;
-      color: var(--ok);
-      background: rgba(52, 211, 153, 0.12);
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-
     .card-title {
       font-size: 1.06rem;
       font-weight: 700;
@@ -299,7 +330,14 @@
     }
 
     .card-title:hover {
-      color: #e9d5ff;
+      color: var(--purple-bright);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .card-price {
@@ -308,8 +346,14 @@
       color: #fff;
     }
 
+    .card-old-price {
+      font-size: 0.86rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
     .sizes-label {
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       color: var(--muted);
     }
 
@@ -338,40 +382,41 @@
 
     .card-actions {
       margin-top: auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
+      display: flex;
+      flex-direction: column;
       gap: 8px;
+      padding-top: 6px;
+    }
+
+    .detail-btn {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .detail-btn:hover {
+      border-color: var(--purple-bright);
     }
 
     .add-btn {
       background: var(--purple);
       color: #fff;
       border: none;
-      padding: 10px 12px;
+      padding: 10px;
       border-radius: 10px;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.2s;
-      font-size: 0.88rem;
     }
 
     .add-btn:hover {
       background: var(--purple-bright);
-    }
-
-    .detail-btn {
-      background: var(--surface-2);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    .detail-btn:hover {
-      border-color: var(--purple-bright);
     }
 
     .empty-msg {
@@ -384,7 +429,79 @@
       border-radius: 16px;
     }
 
-    /* Modal de detalle y zoom de zapatilla */
+    .faq-section {
+      max-width: 900px;
+      margin: 48px auto 0;
+      padding: 0 20px;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .faq-header h2 {
+      font-size: 1.55rem;
+      margin-bottom: 6px;
+    }
+
+    .faq-header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 15px 18px;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-question:hover {
+      color: var(--purple-bright);
+    }
+
+    .faq-icon {
+      color: var(--purple-bright);
+      font-size: 1.15rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 12px 18px 16px;
+      color: var(--muted);
+      font-size: 0.89rem;
+      border-top: 1px solid rgba(46, 36, 68, 0.55);
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
     .product-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -402,150 +519,141 @@
     }
 
     .product-modal {
-      width: 100%;
-      max-width: 880px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 22px;
-      position: relative;
+      border-radius: 20px;
+      max-width: 920px;
+      width: 100%;
       max-height: 92vh;
       overflow-y: auto;
+      position: relative;
+      padding: 22px;
     }
 
-    @media (max-width: 760px) {
-      .product-modal {
-        grid-template-columns: 1fr;
-        padding: 16px;
-      }
-    }
-
-    .modal-close-abs {
-      position: sticky;
-      top: 0;
-      margin-left: auto;
+    .modal-close-top {
+      position: absolute;
+      top: 14px;
+      right: 14px;
       background: var(--card);
       border: 1px solid var(--border);
-      color: var(--text);
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-weight: 800;
       cursor: pointer;
-      font-weight: 700;
       z-index: 5;
     }
 
-    .gallery-col {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 740px) {
+      .product-detail-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .zoom-stage {
       position: relative;
       width: 100%;
-      height: 340px;
-      border-radius: 14px;
-      overflow: hidden;
+      height: 360px;
       background: #0d0914;
       border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: zoom-in;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: zoom-in;
-    }
-
-    .zoom-stage.zoomed {
-      cursor: zoom-out;
     }
 
     .zoom-stage img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform-origin: center center;
       transition: transform 0.15s ease-out;
+      transform-origin: center center;
     }
 
     .zoom-hint {
       font-size: 0.78rem;
       color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
+      text-align: center;
+      margin-top: 8px;
     }
 
-    .thumbs-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .thumb-btn {
-      width: 64px;
-      height: 64px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 2px solid var(--border);
-      background: var(--card);
-      padding: 0;
-      cursor: pointer;
-    }
-
-    .thumb-btn.active {
-      border-color: var(--purple-bright);
-    }
-
-    .thumb-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .info-col {
+    .detail-info {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .spec-box {
+    .detail-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .detail-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .specs-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 12px;
+      padding: 12px 14px;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
     }
 
-    .spec-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
+    .specs-box strong {
+      color: #fff;
     }
 
-    .spec-label {
-      color: var(--muted);
-    }
-
-    .spec-val {
+    .guarantee-pill {
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      color: #86efac;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 0.82rem;
       font-weight: 600;
-      text-align: right;
     }
 
-    /* Carrito modal */
+    .detail-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 6px;
+    }
+
+    .wa-direct-btn {
+      background: var(--wa);
+      color: #06210f;
+      border: none;
+      padding: 11px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.72);
       display: none;
       justify-content: flex-end;
-      z-index: 1000;
+      z-index: 1200;
     }
 
     .modal-backdrop.open {
@@ -637,7 +745,6 @@
       font-size: 0.95rem;
     }
 
-    /* Botón flotante WhatsApp */
     .wa-float {
       position: fixed;
       right: 18px;
@@ -657,7 +764,7 @@
 <body>
 
   <div class="top-banner">
-    Envíos gratis a todo Colombia • Pagos con Nequi, DaviPlata, Bre-B y PSE
+    Envíos GRATIS a todo Colombia • Garantía de 30 días • Pagos con Nequi, DaviPlata, Bre-B y PSE
   </div>
 
   <header>
@@ -665,168 +772,104 @@
       <img src="logo.jpeg" alt="Logo CalzadoClick" onerror="this.style.display='none'" />
       <div>
         <h1>CALZADOCLICK</h1>
-        <span>Estilo y elegancia en cada paso</span>
+        <span>Estilo, calidad garantizada y envío gratis</span>
       </div>
     </div>
-    <button class="cart-btn" onclick="toggleCart(true)">
+    <button type="button" class="cart-btn" onclick="toggleCart(true)">
       Carrito (<span id="cart-count">0</span>)
     </button>
   </header>
 
   <section class="hero">
-    <div class="hero-tag">Selección urbana • Atención directa</div>
-    <h2>Catálogo de Zapatillas</h2>
-    <p>Explora cada par a detalle, haz zoom en sus acabados y asegura tu talla con envío gratis a todo el país.</p>
+    <h2>Tu próximo par favorito está aquí</h2>
+    <p>Toca cualquier zapatilla para ver sus detalles con zoom, materiales y disponibilidad. Recibes en la puerta de tu casa con envío 100% gratis a todo Colombia.</p>
   </section>
 
-  <div class="trust-strip">
-    <div class="trust-item"><span class="trust-dot"></span>Envíos gratis a todo Colombia</div>
-    <div class="trust-item"><span class="trust-dot"></span>Revisa costuras y detalles con zoom</div>
-    <div class="trust-item"><span class="trust-dot"></span>Acompañamiento por talla antes de enviar</div>
-    <div class="trust-item"><span class="trust-dot"></span>Nequi, DaviPlata, Bre-B y PSE</div>
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div>
+        <strong>Envíos GRATIS a todo Colombia</strong>
+        <span>Despacho rápido y seguro hasta tu ciudad</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div>
+        <strong>Garantía real de 30 días</strong>
+        <span>Respaldo total en costuras, pegue y fabricación</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div>
+        <strong>Pagos fáciles y seguros</strong>
+        <span>Nequi, DaviPlata, Bre-B, PSE y atención directa</span>
+      </div>
+    </div>
   </div>
 
-  <div class="filters-wrap" id="filters">
-    <button class="filter-btn active" data-brand="Todas">Todas</button>
-    <button class="filter-btn" data-brand="Nike">Nike</button>
-    <button class="filter-btn" data-brand="Jordan">Jordan</button>
-    <button class="filter-btn" data-brand="Adidas">Adidas</button>
-    <button class="filter-btn" data-brand="Puma">Puma</button>
-    <button class="filter-btn" data-brand="Reebok">Reebok</button>
+  <div class="controls-wrap">
+    <input
+      type="text"
+      id="search-box"
+      class="search-input"
+      placeholder="Buscar modelo o color (ej. Dunk, Celeste, Retro)..."
+      oninput="handleSearch(this.value)"
+    />
+    <div class="filters-wrap" id="filters">
+      <button type="button" class="filter-btn active" data-brand="Todas">Todas</button>
+      <button type="button" class="filter-btn promo-btn" data-brand="PROMOCIONES">PROMOCIONES</button>
+      <button type="button" class="filter-btn" data-brand="Nike">Nike</button>
+      <button type="button" class="filter-btn" data-brand="Jordan">Jordan</button>
+      <button type="button" class="filter-btn" data-brand="Adidas">Adidas</button>
+      <button type="button" class="filter-btn" data-brand="Puma">Puma</button>
+      <button type="button" class="filter-btn" data-brand="Reebok">Reebok</button>
+    </div>
   </div>
 
   <main class="grid" id="catalog"></main>
 
-  <!-- Modal de vista detallada + zoom -->
-  <div class="product-modal-backdrop" id="product-modal" onclick="if(event.target === this) closeProductModal()">
-    <div class="product-modal" id="product-modal-content"></div>
-  </div>
-
-  <!-- Carrito lateral -->
-  <div class="modal-backdrop" id="cart-modal" onclick="if(event.target === this) toggleCart(false)">
-    <aside class="drawer">
-      <div class="drawer-top">
-        <h2>Tu Pedido</h2>
-        <button class="close-btn" onclick="toggleCart(false)">X</button>
-      </div>
-      <div id="cart-items"></div>
-      <div class="summary-box">
-        <div class="summary-row">
-          <span>Envío</span>
-          <span style="color: var(--ok);">GRATIS</span>
-        </div>
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span id="cart-subtotal">$0</span>
-        </div>
-        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
-          Asegurar pedido por WhatsApp
+  <section class="faq-section" id="faq">
+    <div class="faq-header">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Todo claro antes de pedir tu par en CalzadoClick</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿El envío a todo Colombia es realmente gratis?
+          <span class="faq-icon">+</span>
         </button>
+        <div class="faq-answer">
+          Sí. Todos los pedidos realizados en CalzadoClick cuentan con envío gratis a cualquier ciudad o municipio con cobertura en Colombia, sin cargos ocultos al finalizar tu compra.
+        </div>
       </div>
-    </aside>
-  </div>
 
-  <a
-    class="wa-float"
-    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20quiero%20asesor%C3%ADa%20sobre%20las%20zapatillas%20y%20el%20env%C3%ADo%20gratis"
-    target="_blank"
-    rel="noopener"
-  >
-    WhatsApp • 320 646 6252
-  </a>
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo funciona la garantía de 30 días?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Cuentas con 30 días de garantía por defectos de fabricación (como despegue o fallas de costura en uso normal). Escríbenos por WhatsApp con tu número de pedido y fotos o video para ayudarte de inmediato.
+        </div>
+      </div>
 
-  <script>
-    const WHATSAPP_NUMBER = "573206466252";
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo elijo bien mi talla y qué pasa si necesito cambio?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          La mayoría de nuestras referencias manejan horma estándar; si estás entre dos tallas o tienes duda sobre el ajuste, escríbenos antes de pagar y te asesoramos. Si necesitas cambio de talla, consúltanos por WhatsApp para coordinarlo según disponibilidad.
+        </div>
+      </div>
 
-    // Puedes usar "image" para una foto o "images": ["foto1.jpeg", "foto2.jpeg"] para galería
-    const PRODUCTS = [
-      {
-        id: 1,
-        brand: "Nike",
-        name: "Nike Dunk Low Celeste",
-        price: 159900,
-        sizes: ["36", "37", "38", "39"],
-        image: "nikedunklowceleste36al39.jpeg",
-        images: ["nikedunklowceleste36al39.jpeg"],
-        fit: "Horma exacta",
-        upper: "Cuero sintético liso con paneles en tono celeste",
-        sole: "Suela de caucho antideslizante cosida en borde",
-        description: "Diseño clásico de perfil bajo pensado para uso diario. Combina fácilmente con jeans, cargo o conjuntos casuales manteniendo estructura firme en el empeine."
-      },
-      {
-        id: 2,
-        brand: "Jordan",
-        name: "Retro Court Negra",
-        price: 185000,
-        sizes: ["38", "39", "40", "41", "42", "43"],
-        image: "",
-        images: [],
-        fit: "Horma normal",
-        upper: "Capellada negra con refuerzos laterales estructurados",
-        sole: "Suela de alta resistencia con buen agarre urbano",
-        description: "Silueta de inspiración cancha en tono negro versátil. Ideal para quienes buscan presencia sobria y comodidad durante jornadas largas."
-      }
-    ];
-
-    let selectedBrand = "Todas";
-    let selectedSizes = {};
-    let cart = [];
-    let activeModalProductId = null;
-    let activeModalImage = "";
-    let isZoomLocked = false;
-
-    function formatCOP(value) {
-      return "$" + Number(value).toLocaleString("es-CO");
-    }
-
-    function getProductImages(product) {
-      if (Array.isArray(product.images) && product.images.length > 0) {
-        return product.images.filter(Boolean);
-      }
-      return product.image ? [product.image] : [];
-    }
-
-    function selectSize(productId, size) {
-      selectedSizes[productId] = size;
-      renderCatalog();
-      if (activeModalProductId === productId) {
-        renderProductModalContent();
-      }
-    }
-
-    function renderCatalog() {
-      const catalog = document.getElementById("catalog");
-      const filtered = selectedBrand === "Todas"
-        ? PRODUCTS
-        : PRODUCTS.filter(p => p.brand.toLowerCase() === selectedBrand.toLowerCase());
-
-      if (filtered.length === 0) {
-        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos cargados en la marca <strong>${selectedBrand}</strong>. Escríbenos por WhatsApp y te avisamos cuando llegue tu talla.</div>`;
-        return;
-      }
-
-      catalog.innerHTML = filtered.map(product => {
-        const currentSize = selectedSizes[product.id] || product.sizes[0];
-        const imgs = getProductImages(product);
-        const mainImg = imgs[0] || "";
-
-        const imageHTML = mainImg
-          ? `<img src="${mainImg}" alt="${product.name}" onerror="this.parentElement.innerHTML='<div class=\\'no-img-placeholder\\'>Foto no disponible (${mainImg})</div>'" />
-             <span class="inspect-badge">Ver y hacer zoom</span>`
-          : `<div class="no-img-placeholder">Foto próximamente<br/><small>Toca para ver ficha</small></div>`;
-
-        const sizesHTML = product.sizes.map(size => `
-          <button
-            type="button"
-            class="size-chip ${currentSize === size ? "selected" : ""}"
-            onclick="selectSize(${product.id}, '${size}')"
-          >${size}</button>
-        `).join("");
-
-        return `
-          <article class="card">
-            <div class="card-img-wrap" onclick="openProductModal(${product.id})">
-              ${imageHTML}
-            </div>
-            <div class="card-body">
-              <div class="card-top-r
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué medios de pago aceptan?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Recibimos pagos mediante Nequi, DaviPlata, Bre-B y PSE, con confirmación directa por WhatsApp para que tu pedido salga despachado sin demoras.
