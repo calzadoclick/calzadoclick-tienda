@@ -566,7 +566,7 @@
 
   <header>
     <div class="brand">
-      <img src="logo.jpeg" alt="Logo CalzadoClick" onerror="this.style.display='none'" />
+      <img src="logo.jpeg" alt="Logo CalzadoClick" />
       <div>
         <h1>CALZADOCLICK</h1>
         <span>Estilo y elegancia en cada paso</span>
@@ -583,13 +583,13 @@
   </section>
 
   <div class="filters-wrap" id="filters">
-    <button class="filter-btn active" data-brand="Todas">Todas</button>
-    <button class="filter-btn" data-brand="PROMOCIONES">PROMOCIONES</button>
-    <button class="filter-btn" data-brand="Nike">Nike</button>
-    <button class="filter-btn" data-brand="Jordan">Jordan</button>
-    <button class="filter-btn" data-brand="Adidas">Adidas</button>
-    <button class="filter-btn" data-brand="Puma">Puma</button>
-    <button class="filter-btn" data-brand="Reebok">Reebok</button>
+    <button type="button" class="filter-btn active" onclick="setBrandFilter('Todas', this)">Todas</button>
+    <button type="button" class="filter-btn" onclick="setBrandFilter('PROMOCIONES', this)">PROMOCIONES</button>
+    <button type="button" class="filter-btn" onclick="setBrandFilter('Nike', this)">Nike</button>
+    <button type="button" class="filter-btn" onclick="setBrandFilter('Jordan', this)">Jordan</button>
+    <button type="button" class="filter-btn" onclick="setBrandFilter('Adidas', this)">Adidas</button>
+    <button type="button" class="filter-btn" onclick="setBrandFilter('Puma', this)">Puma</button>
+    <button type="button" class="filter-btn" onclick="setBrandFilter('Reebok', this)">Reebok</button>
   </div>
 
   <main class="grid" id="catalog"></main>
@@ -606,4 +606,192 @@
       </div>
       <div id="cart-items"></div>
       <div class="summary-box">
-        <div class="summary
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0</span>
+        </div>
+        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
+          Pedir por WhatsApp
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <a
+    class="wa-float"
+    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20tengo%20una%20consulta%20sobre%20las%20zapatillas%20y%20los%20env%C3%ADos"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp • 320 646 6252
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "573206466252";
+
+    // Edita brand ("Nike", "Jordan", "Adidas", "Puma", "Reebok"), promo (true/false),
+    // name, price, sizes, image, images (varias fotos), description, specs y materials
+    const PRODUCTS = [
+      {
+        id: 1,
+        brand: "Nike",
+        promo: true,
+        name: "Nike Dunk Low Celeste",
+        price: 159900,
+        sizes: ["36", "37", "38", "39"],
+        image: "nikedunklowceleste36al39.jpeg",
+        images: ["nikedunklowceleste36al39.jpeg"],
+        description: "Zapatilla urbana de corte bajo en tono celeste y blanco, ideal para uso diario y combinaciones casuales.",
+        specs: "Confección de corte bajo, costuras reforzadas, plantilla acolchada y suela de tracción firme.",
+        materials: "Capellada en cuero sintético, forro interno textil y suela de caucho."
+      },
+      {
+        id: 2,
+        brand: "Jordan",
+        promo: false,
+        name: "Retro Court Negra",
+        price: 185000,
+        sizes: ["38", "39", "40", "41", "42", "43"],
+        image: "",
+        images: [],
+        description: "Modelo estilo retro en tono negro con diseño versátil para el día a día.",
+        specs: "Estructura firme, lengüeta acolchada y suela con buen agarre.",
+        materials: "Material sintético, interior textil y suela de goma."
+      }
+    ];
+
+    let selectedBrand = "Todas";
+    let selectedSizes = {};
+    let cart = [];
+    let touchZoomActive = false;
+
+    function formatCOP(value) {
+      return "$" + Number(value).toLocaleString("es-CO");
+    }
+
+    function getProductPhotos(product) {
+      if (Array.isArray(product.images) && product.images.length > 0) {
+        return product.images.filter(Boolean);
+      }
+      return product.image ? [product.image] : [];
+    }
+
+    function setBrandFilter(brand, btnEl) {
+      selectedBrand = brand;
+      const allBtns = document.querySelectorAll(".filter-btn");
+      for (let i = 0; i < allBtns.length; i++) {
+        allBtns[i].classList.remove("active");
+      }
+      if (btnEl) {
+        btnEl.classList.add("active");
+      }
+      renderCatalog();
+    }
+
+    function selectSize(productId, size) {
+      selectedSizes[productId] = size;
+      renderCatalog();
+    }
+
+    function renderCatalog() {
+      const catalog = document.getElementById("catalog");
+      if (!catalog) return;
+
+      const filtered = PRODUCTS.filter(p => {
+        if (selectedBrand === "Todas") return true;
+        if (selectedBrand === "PROMOCIONES") return Boolean(p.promo);
+        return String(p.brand).toLowerCase() === String(selectedBrand).toLowerCase();
+      });
+
+      if (filtered.length === 0) {
+        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos cargados en <strong>${selectedBrand}</strong>.</div>`;
+        return;
+      }
+
+      catalog.innerHTML = filtered.map(product => {
+        const currentSize = selectedSizes[product.id] || product.sizes[0];
+        const photos = getProductPhotos(product);
+        const firstPhoto = photos[0] || "";
+
+        const imageHTML = firstPhoto
+          ? `<img src="${firstPhoto}" alt="${product.name}" />`
+          : `<div class="no-img-placeholder">Foto próximamente</div>`;
+
+        const promoBadge = product.promo ? `<span class="promo-tag">PROMO</span>` : "";
+
+        const sizesHTML = product.sizes.map(size => `
+          <button
+            type="button"
+            class="size-chip ${currentSize === size ? "selected" : ""}"
+            onclick="selectSize(${product.id}, '${size}')"
+          >${size}</button>
+        `).join("");
+
+        return `
+          <article class="card">
+            <div class="card-img-wrap" onclick="openDetailModal(${product.id})">
+              ${promoBadge}
+              ${imageHTML}
+            </div>
+            <div class="card-body">
+              <div class="card-brand">${product.brand}</div>
+              <div class="card-title" onclick="openDetailModal(${product.id})">${product.name}</div>
+              <div class="card-price">${formatCOP(product.price)}</div>
+              <div class="sizes-label">Talla seleccionada: <strong>${currentSize}</strong></div>
+              <div class="sizes-list">${sizesHTML}</div>
+              <button type="button" class="add-btn" onclick="addToCart(${product.id})">
+                Agregar al carrito
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function openDetailModal(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      touchZoomActive = false;
+      const currentSize = selectedSizes[product.id] || product.sizes[0];
+      const photos = getProductPhotos(product);
+
+      const mainImgHTML = photos.length > 0
+        ? `<img id="detail-zoom-img" src="${photos[0]}" alt="${product.name}" />`
+        : `<div class="no-img-placeholder">Foto próximamente</div>`;
+
+      const thumbsHTML = photos.length > 1
+        ? `<div class="thumbs-bar">
+            ${photos.map((src, idx) => `
+              <button type="button" class="thumb-item ${idx === 0 ? "active" : ""}" onclick="switchDetailPhoto('${src}', this)">
+                <img src="${src}" alt="Foto ${idx + 1}" />
+              </button>
+            `).join("")}
+          </div>`
+        : "";
+
+      const sizesHTML = product.sizes.map(size => `
+        <button
+          type="button"
+          class="size-chip ${currentSize === size ? "selected" : ""}"
+          onclick="selectSize(${product.id}, '${size}'); openDetailModal(${product.id});"
+        >${size}</button>
+      `).join("");
+
+      const content = document.getElementById("detail-content");
+      content.innerHTML = `
+        <button type="button" class="detail-close" onclick="closeDetailModal()">X</button>
+        <div>
+          <div
+            class="zoom-box"
+            id="zoom-box"
+            onmousemove="moveZoom(event)"
+            onmouseleave="leaveZoom()"
+            onclick="toggleTouchZoom(event)"
+          >
+            ${mainImgHTML}
+          </div>
+          ${photos.length > 0 ? `<div class="zoom-note">Pasa el cursor (o toca la foto) para hacer zoom</div>` : ""}
+          ${thumbsHTML}
+        </div>
+        <div class="detail-col">
