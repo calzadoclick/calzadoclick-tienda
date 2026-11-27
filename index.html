@@ -33,7 +33,6 @@
       padding-bottom: 84px;
     }
 
-    /* Barra superior de envío gratis */
     .top-banner {
       background: linear-gradient(90deg, #581c87, #7e22ce, #581c87);
       color: #ffffff;
@@ -48,10 +47,10 @@
       position: sticky;
       top: 0;
       z-index: 25;
-      background: rgba(12, 9, 18, 0.9);
+      background: rgba(12, 9, 18, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 18px;
+      padding: 10px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -60,14 +59,30 @@
 
     .brand {
       display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid rgba(168, 85, 247, 0.5);
+      background: #181324;
+    }
+
+    .brand-text {
+      display: flex;
       flex-direction: column;
     }
 
     .brand-name {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 800;
       letter-spacing: 1px;
       color: #ffffff;
+      line-height: 1.15;
     }
 
     .brand-name span {
@@ -93,16 +108,11 @@
       box-shadow: 0 4px 16px rgba(147, 51, 234, 0.35);
     }
 
-    .cart-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* Hero */
     .hero {
       text-align: center;
       max-width: 760px;
       margin: 0 auto;
-      padding: 32px 18px 20px;
+      padding: 30px 18px 18px;
     }
 
     .badge-shipping {
@@ -118,7 +128,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(1.65rem, 4.5vw, 2.5rem);
+      font-size: clamp(1.65rem, 4.5vw, 2.45rem);
       line-height: 1.18;
       margin-bottom: 10px;
       color: #ffffff;
@@ -133,16 +143,49 @@
       font-size: 0.98rem;
     }
 
-    /* Filtros */
-    .toolbar {
+    /* Filtros y marcas */
+    .filters-wrap {
       max-width: 1120px;
       margin: 12px auto 20px;
       padding: 0 18px;
       display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .brand-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .brand-pill {
+      background: var(--surface);
+      color: #e9d5ff;
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .brand-pill:hover {
+      border-color: var(--purple-bright);
+    }
+
+    .brand-pill.active {
+      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .toolbar {
+      display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-      justify-content: space-between;
     }
 
     .search-input {
@@ -156,18 +199,20 @@
       font-size: 0.92rem;
     }
 
-    .search-input:focus, select:focus, input:focus {
-      outline: none;
-      border-color: var(--purple-bright);
-    }
-
-    .size-filter {
+    .select-filter {
+      flex: 0 1 190px;
+      min-width: 145px;
       padding: 10px 12px;
       border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
       font-size: 0.92rem;
+    }
+
+    .search-input:focus, .select-filter:focus, select:focus, input:focus {
+      outline: none;
+      border-color: var(--purple-bright);
     }
 
     /* Catálogo */
@@ -233,21 +278,27 @@
       border-radius: 999px;
     }
 
+    .brand-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #d8b4fe;
+      margin-bottom: 2px;
+    }
+
     .card-title {
       font-size: 1.05rem;
       font-weight: 700;
       color: #ffffff;
     }
 
-    .card-meta {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
     .price {
       font-size: 1.2rem;
       font-weight: 800;
       color: #e9d5ff;
+      margin-top: 4px;
     }
 
     select, input {
@@ -427,11 +478,6 @@
       cursor: pointer;
     }
 
-    .wa-order-btn:hover {
-      filter: brightness(1.05);
-    }
-
-    /* Boton flotante WhatsApp */
     .wa-float {
       position: fixed;
       bottom: 16px;
@@ -450,8 +496,11 @@
       gap: 6px;
     }
 
-    /* Ajustes para celular */
     @media (max-width: 600px) {
+      .brand-logo {
+        width: 36px;
+        height: 36px;
+      }
       .grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -471,7 +520,7 @@
       .price {
         font-size: 1rem;
       }
-      select, .add-btn {
+      select, .add-btn, .select-filter {
         font-size: 0.82rem;
         padding: 8px;
       }
@@ -488,13 +537,21 @@
 <body>
 
   <div class="top-banner">
-    ENVÍO GRATIS A TODO COLOMBIA • Paga por Nequi, DaviPlata, Llave Bre-B, PSE o Addi
+    ENVÍOS GRATIS EN TODA COLOMBIA • Nequi, DaviPlata, Llave Bre-B, PSE y Addi
   </div>
 
   <header>
     <div class="brand">
-      <div class="brand-name">CALZADO<span>CLICK</span></div>
-      <div class="brand-slogan">Estilo y elegancia</div>
+      <img
+        src="logo.png"
+        alt="Logo CalzadoClick"
+        class="brand-logo"
+        onerror="this.style.display='none'"
+      />
+      <div class="brand-text">
+        <div class="brand-name">CALZADO<span>CLICK</span></div>
+        <div class="brand-slogan">Estilo y elegancia</div>
+      </div>
     </div>
     <button class="cart-btn" onclick="toggleCart(true)">
       Carrito (<span id="cart-count">0</span>)
@@ -502,30 +559,49 @@
   </header>
 
   <section class="hero">
-    <div class="badge-shipping">Envío gratis nacional • Envíos a toda Colombia</div>
+    <div class="badge-shipping">Envíos gratis en toda Colombia</div>
     <h1>Zapatillas con <span>estilo y elegancia</span></h1>
-    <p>Elige tu modelo y talla, selecciona tu método de pago y envía tu pedido directo a nuestro WhatsApp.</p>
+    <p>Filtra por tu marca favorita, elige tu talla y envía tu pedido directo por WhatsApp.</p>
   </section>
 
-  <div class="toolbar">
-    <input
-      id="search-input"
-      class="search-input"
-      type="text"
-      placeholder="Buscar zapatilla (ej. Runner, Classic, Chunky)..."
-      oninput="renderCatalog()"
-    />
-    <select id="size-filter" class="size-filter" onchange="renderCatalog()">
-      <option value="">Todas las tallas</option>
-      <option value="36">Talla 36</option>
-      <option value="37">Talla 37</option>
-      <option value="38">Talla 38</option>
-      <option value="39">Talla 39</option>
-      <option value="40">Talla 40</option>
-      <option value="41">Talla 41</option>
-      <option value="42">Talla 42</option>
-      <option value="43">Talla 43</option>
-    </select>
+  <div class="filters-wrap">
+    <div class="brand-pills" id="brand-pills">
+      <button type="button" class="brand-pill active" data-brand="" onclick="selectBrand('')">Todas las marcas</button>
+      <button type="button" class="brand-pill" data-brand="Nike" onclick="selectBrand('Nike')">Nike</button>
+      <button type="button" class="brand-pill" data-brand="Jordan" onclick="selectBrand('Jordan')">Jordan</button>
+      <button type="button" class="brand-pill" data-brand="Adidas" onclick="selectBrand('Adidas')">Adidas</button>
+      <button type="button" class="brand-pill" data-brand="Puma" onclick="selectBrand('Puma')">Puma</button>
+      <button type="button" class="brand-pill" data-brand="Reebok" onclick="selectBrand('Reebok')">Reebok</button>
+    </div>
+
+    <div class="toolbar">
+      <input
+        id="search-input"
+        class="search-input"
+        type="text"
+        placeholder="Buscar modelo o marca..."
+        oninput="renderCatalog()"
+      />
+      <select id="brand-select" class="select-filter" onchange="selectBrand(this.value)">
+        <option value="">Todas las marcas</option>
+        <option value="Nike">Nike</option>
+        <option value="Jordan">Jordan</option>
+        <option value="Adidas">Adidas</option>
+        <option value="Puma">Puma</option>
+        <option value="Reebok">Reebok</option>
+      </select>
+      <select id="size-filter" class="select-filter" onchange="renderCatalog()">
+        <option value="">Todas las tallas</option>
+        <option value="36">Talla 36</option>
+        <option value="37">Talla 37</option>
+        <option value="38">Talla 38</option>
+        <option value="39">Talla 39</option>
+        <option value="40">Talla 40</option>
+        <option value="41">Talla 41</option>
+        <option value="42">Talla 42</option>
+        <option value="43">Talla 43</option>
+      </select>
+    </div>
   </div>
 
   <main class="grid" id="catalog"></main>
@@ -545,7 +621,7 @@
           <span id="cart-subtotal">$0</span>
         </div>
         <div class="summary-row">
-          <span>Envío a Colombia</span>
+          <span>Envíos en Colombia</span>
           <span class="free-highlight">GRATIS</span>
         </div>
         <div class="summary-row total-row">
@@ -585,7 +661,7 @@
 
   <a
     class="wa-float"
-    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20tengo%20una%20pregunta%20sobre%20las%20zapatillas%20y%20el%20env%C3%ADo%20gratis."
+    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20tengo%20una%20pregunta%20sobre%20las%20zapatillas%20y%20los%20env%C3%ADos%20gratis%20en%20Colombia."
     target="_blank"
     rel="noopener"
   >
@@ -618,43 +694,61 @@
       }
     };
 
-    // Cambia precios, nombres, tallas y agrega la propiedad image: "img/tu-foto.jpg" cuando subas tus fotos
+    // Edita brand ("Nike", "Jordan", "Adidas", "Puma", "Reebok"), name, price, sizes y agrega image: "img/foto.jpg"
     const PRODUCTS = [
       {
         id: 1,
-        name: "Runner Urbana Morada",
-        category: "Urbana",
-        price: 150000,
+        brand: "Nike",
+        name: "Air Runner Morada",
+        price: 155000,
         sizes: ["37", "38", "39", "40", "41", "42"],
         image: ""
       },
       {
         id: 2,
-        name: "Classic Elegante Negra",
-        category: "Clásica",
-        price: 165000,
-        sizes: ["36", "37", "38", "39", "40", "41"],
-        image: ""
-      },
-      {
-        id: 3,
-        name: "Chunky Street Lila",
-        category: "Street",
-        price: 180000,
+        brand: "Jordan",
+        name: "Retro Court Negra",
+        price: 185000,
         sizes: ["38", "39", "40", "41", "42", "43"],
         image: ""
       },
       {
-        id: 4,
-        name: "Court Noir Minimal",
-        category: "Elegante",
+        id: 3,
+        brand: "Adidas",
+        name: "Forum Low Lila",
         price: 170000,
+        sizes: ["36", "37", "38", "39", "40", "41"],
+        image: ""
+      },
+      {
+        id: 4,
+        brand: "Puma",
+        name: "Suede Classic Noir",
+        price: 160000,
+        sizes: ["37", "38", "39", "40", "41", "42"],
+        image: ""
+      },
+      {
+        id: 5,
+        brand: "Reebok",
+        name: "Club C Urbana",
+        price: 150000,
         sizes: ["37", "38", "39", "40", "41"],
         image: ""
       }
     ];
 
+    let selectedBrand = "";
     let cart = [];
+
+    function selectBrand(brand) {
+      selectedBrand = brand;
+      document.getElementById("brand-select").value = brand;
+      document.querySelectorAll(".brand-pill").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.brand === brand);
+      });
+      renderCatalog();
+    }
 
     function formatCOP(val) {
       return new Intl.NumberFormat("es-CO", {
@@ -669,9 +763,12 @@
       const selectedSize = document.getElementById("size-filter").value;
 
       const filtered = PRODUCTS.filter(p => {
-        const matchesText = !query || p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query);
+        const matchesBrand = !selectedBrand || p.brand.toLowerCase() === selectedBrand.toLowerCase();
+        const matchesText = !query ||
+          p.name.toLowerCase().includes(query) ||
+          p.brand.toLowerCase().includes(query);
         const matchesSize = !selectedSize || p.sizes.includes(selectedSize);
-        return matchesText && matchesSize;
+        return matchesBrand && matchesText && matchesSize;
       });
 
       const el = document.getElementById("catalog");
@@ -683,86 +780,5 @@
       el.innerHTML = filtered.map(p => {
         const defaultSize = selectedSize && p.sizes.includes(selectedSize) ? selectedSize : p.sizes[0];
         const imgContent = p.image
-          ? `<img src="${p.image}" alt="${p.name}" />`
-          : `<span>Pronto foto:<br><strong>${p.name}</strong></span>`;
-
-        return `
-          <article class="card">
-            <div>
-              <div class="img-box">
-                <span class="free-tag">Envío gratis</span>
-                ${imgContent}
-              </div>
-            </div>
-            <div>
-              <div class="card-meta">${p.category}</div>
-              <h3 class="card-title">${p.name}</h3>
-              <div class="price">${formatCOP(p.price)}</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:8px;">
-              <select id="size-${p.id}">
-                ${p.sizes.map(s => `<option value="${s}" ${s === defaultSize ? "selected" : ""}>Talla ${s}</option>`).join("")}
-              </select>
-              <button class="add-btn" onclick="addToCart(${p.id})">Agregar al carrito</button>
-            </div>
-          </article>
-        `;
-      }).join("");
-    }
-
-    function addToCart(id) {
-      const product = PRODUCTS.find(p => p.id === id);
-      const size = document.getElementById(`size-${id}`).value;
-      const existing = cart.find(item => item.id === id && item.size === size);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ id: product.id, name: product.name, price: product.price, size, qty: 1 });
-      }
-      updateCartUI();
-      toggleCart(true);
-    }
-
-    function removeItem(index) {
-      cart.splice(index, 1);
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      const count = cart.reduce((acc, item) => acc + item.qty, 0);
-      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-
-      document.getElementById("cart-count").textContent = count;
-      document.getElementById("cart-subtotal").textContent = formatCOP(subtotal);
-      document.getElementById("cart-total").textContent = formatCOP(subtotal);
-
-      const container = document.getElementById("cart-items");
-      if (cart.length === 0) {
-        container.innerHTML = `<p style="color:#b4acc9;font-size:0.9rem;">Tu carrito está vacío. Agrega un par para comenzar.</p>`;
-        return;
-      }
-
-      container.innerHTML = cart.map((item, idx) => `
-        <div class="cart-item">
-          <div>
-            <div style="font-size:0.92rem;"><strong>${item.name}</strong> · Talla ${item.size}</div>
-            <div style="color:#b4acc9;font-size:0.82rem;">${item.qty} x ${formatCOP(item.price)}</div>
-          </div>
-          <button class="remove-btn" onclick="removeItem(${idx})">Quitar</button>
-        </div>
-      `).join("");
-    }
-
-    function renderPaymentInfo() {
-      const method = document.getElementById("payment-method").value;
-      const info = PAYMENT_INFO[method];
-      const copyButtonHtml = info.copyValue
-        ? `<button type="button" class="copy-btn" onclick="copyPaymentValue('${info.copyValue}')">Copiar ${info.copyValue}</button>`
-        : "";
-
-      document.getElementById("payment-info").innerHTML = `
-        <strong>Pago con ${method}:</strong>
-        <div>${info.text}</div>
-        ${copyButtonHtml}
-      `;
-    }
+          ? `<img src="${p.image}" alt="${p.brand} ${p.name}" />`
+          : `<span>Pronto foto:<br><strong>${p.brand} ${p.name}</strong></
