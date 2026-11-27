@@ -18,7 +18,6 @@
       --border: #2e2444;
       --wa: #25d366;
       --promo: #f43f5e;
-      --gold: #fbbf24;
     }
 
     * {
@@ -32,7 +31,7 @@
       background: radial-gradient(circle at top, #1b112e 0%, var(--bg) 55%);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 90px;
+      padding-bottom: 96px;
       min-height: 100vh;
     }
 
@@ -111,12 +110,11 @@
 
     .hero p {
       color: var(--muted);
-      max-width: 650px;
+      max-width: 660px;
       margin: 0 auto;
       font-size: 0.96rem;
     }
 
-    /* Barra de confianza */
     .trust-bar {
       max-width: 1180px;
       margin: 14px auto 6px;
@@ -127,10 +125,10 @@
     }
 
     .trust-item {
-      background: rgba(24, 19, 36, 0.85);
+      background: rgba(24, 19, 36, 0.88);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 10px 14px;
+      padding: 11px 14px;
       font-size: 0.82rem;
       color: var(--text);
       display: flex;
@@ -148,16 +146,15 @@
 
     .trust-item strong {
       display: block;
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       color: #fff;
     }
 
     .trust-item span {
       color: var(--muted);
-      font-size: 0.76rem;
+      font-size: 0.77rem;
     }
 
-    /* Buscador y filtros */
     .controls-wrap {
       max-width: 1180px;
       margin: 0 auto;
@@ -170,7 +167,7 @@
 
     .search-input {
       width: 100%;
-      max-width: 440px;
+      max-width: 450px;
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
@@ -226,7 +223,6 @@
       color: #fff;
     }
 
-    /* Grid de catálogo */
     .grid {
       max-width: 1180px;
       margin: 0 auto;
@@ -294,7 +290,7 @@
       position: absolute;
       bottom: 10px;
       right: 10px;
-      background: rgba(9, 7, 13, 0.82);
+      background: rgba(9, 7, 13, 0.84);
       border: 1px solid var(--border);
       color: #fff;
       font-size: 0.74rem;
@@ -433,7 +429,79 @@
       border-radius: 16px;
     }
 
-    /* Modal de Producto con Zoom */
+    .faq-section {
+      max-width: 900px;
+      margin: 48px auto 0;
+      padding: 0 20px;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .faq-header h2 {
+      font-size: 1.55rem;
+      margin-bottom: 6px;
+    }
+
+    .faq-header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 15px 18px;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-question:hover {
+      color: var(--purple-bright);
+    }
+
+    .faq-icon {
+      color: var(--purple-bright);
+      font-size: 1.15rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 12px 18px 16px;
+      color: var(--muted);
+      font-size: 0.89rem;
+      border-top: 1px solid rgba(46, 36, 68, 0.55);
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
     .product-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -519,34 +587,6 @@
       margin-top: 8px;
     }
 
-    .thumbs-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    .thumb-btn {
-      width: 62px;
-      height: 62px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 2px solid var(--border);
-      background: var(--card);
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .thumb-btn.active {
-      border-color: var(--purple-bright);
-    }
-
-    .thumb-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .detail-info {
       display: flex;
       flex-direction: column;
@@ -607,7 +647,6 @@
       font-size: 0.92rem;
     }
 
-    /* Carrito modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -706,7 +745,6 @@
       font-size: 0.95rem;
     }
 
-    /* Botón flotante WhatsApp */
     .wa-float {
       position: fixed;
       right: 18px;
@@ -737,21 +775,21 @@
         <span>Estilo, calidad garantizada y envío gratis</span>
       </div>
     </div>
-    <button class="cart-btn" onclick="toggleCart(true)">
+    <button type="button" class="cart-btn" onclick="toggleCart(true)">
       Carrito (<span id="cart-count">0</span>)
     </button>
   </header>
 
   <section class="hero">
     <h2>Tu próximo par favorito está aquí</h2>
-    <p>Toca cualquier zapatilla para ver sus detalles con zoom, materiales y disponibilidad. Recibes en la puerta de tu casa con envío 100% gratis.</p>
+    <p>Toca cualquier zapatilla para ver sus detalles con zoom, materiales y disponibilidad. Recibes en la puerta de tu casa con envío 100% gratis a todo Colombia.</p>
   </section>
 
   <div class="trust-bar">
     <div class="trust-item">
       <div class="trust-dot"></div>
       <div>
-        <strong>Envío GRATIS a toda Colombia</strong>
+        <strong>Envíos GRATIS a todo Colombia</strong>
         <span>Despacho rápido y seguro hasta tu ciudad</span>
       </div>
     </div>
@@ -766,7 +804,7 @@
       <div class="trust-dot"></div>
       <div>
         <strong>Pagos fáciles y seguros</strong>
-        <span>Nequi, DaviPlata, Bre-B, PSE y atención personalizada</span>
+        <span>Nequi, DaviPlata, Bre-B, PSE y atención directa</span>
       </div>
     </div>
   </div>
@@ -780,93 +818,58 @@
       oninput="handleSearch(this.value)"
     />
     <div class="filters-wrap" id="filters">
-      <button class="filter-btn active" data-brand="Todas">Todas</button>
-      <button class="filter-btn promo-btn" data-brand="PROMOCIONES">PROMOCIONES</button>
-      <button class="filter-btn" data-brand="Nike">Nike</button>
-      <button class="filter-btn" data-brand="Jordan">Jordan</button>
-      <button class="filter-btn" data-brand="Adidas">Adidas</button>
-      <button class="filter-btn" data-brand="Puma">Puma</button>
-      <button class="filter-btn" data-brand="Reebok">Reebok</button>
+      <button type="button" class="filter-btn active" data-brand="Todas">Todas</button>
+      <button type="button" class="filter-btn promo-btn" data-brand="PROMOCIONES">PROMOCIONES</button>
+      <button type="button" class="filter-btn" data-brand="Nike">Nike</button>
+      <button type="button" class="filter-btn" data-brand="Jordan">Jordan</button>
+      <button type="button" class="filter-btn" data-brand="Adidas">Adidas</button>
+      <button type="button" class="filter-btn" data-brand="Puma">Puma</button>
+      <button type="button" class="filter-btn" data-brand="Reebok">Reebok</button>
     </div>
   </div>
 
   <main class="grid" id="catalog"></main>
 
-  <!-- Modal de Ficha de Producto + Zoom -->
-  <div class="product-modal-backdrop" id="product-modal" onclick="if(event.target === this) closeProductModal()">
-    <div class="product-modal" id="product-modal-content"></div>
-  </div>
-
-  <!-- Carrito Lateral -->
-  <div class="modal-backdrop" id="cart-modal" onclick="if(event.target === this) toggleCart(false)">
-    <aside class="drawer">
-      <div class="drawer-top">
-        <h2>Tu Pedido</h2>
-        <button class="close-btn" onclick="toggleCart(false)">X</button>
-      </div>
-      <div id="cart-items"></div>
-      <div class="summary-box">
-        <div class="summary-row">
-          <span>Envío</span>
-          <span style="color: #86efac;">GRATIS</span>
-        </div>
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span id="cart-subtotal">$0</span>
-        </div>
-        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
-          Finalizar pedido por WhatsApp
+  <section class="faq-section" id="faq">
+    <div class="faq-header">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Todo claro antes de pedir tu par en CalzadoClick</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿El envío a todo Colombia es realmente gratis?
+          <span class="faq-icon">+</span>
         </button>
+        <div class="faq-answer">
+          Sí. Todos los pedidos realizados en CalzadoClick cuentan con envío gratis a cualquier ciudad o municipio con cobertura en Colombia, sin cargos ocultos al finalizar tu compra.
+        </div>
       </div>
-    </aside>
-  </div>
 
-  <a
-    class="wa-float"
-    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20quiero%20asesor%C3%ADa%20sobre%20las%20zapatillas%20y%20tallas%20disponibles"
-    target="_blank"
-    rel="noopener"
-  >
-    WhatsApp • 320 646 6252
-  </a>
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo funciona la garantía de 30 días?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Cuentas con 30 días de garantía por defectos de fabricación (como despegue o fallas de costura en uso normal). Escríbenos por WhatsApp con tu número de pedido y fotos o video para ayudarte de inmediato.
+        </div>
+      </div>
 
-  <script>
-    const WHATSAPP_NUMBER = "573206466252";
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo elijo bien mi talla y qué pasa si necesito cambio?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          La mayoría de nuestras referencias manejan horma estándar; si estás entre dos tallas o tienes duda sobre el ajuste, escríbenos antes de pagar y te asesoramos. Si necesitas cambio de talla, consúltanos por WhatsApp para coordinarlo según disponibilidad.
+        </div>
+      </div>
 
-    // Puedes agregar más fotos en images: ["foto1.jpeg", "foto2.jpeg"]
-    // Si quieres poner una zapatilla en PROMOCIONES, pon promo: true y oldPrice con el precio anterior
-    const PRODUCTS = [
-      {
-        id: 1,
-        brand: "Nike",
-        name: "Nike Dunk Low Celeste",
-        price: 159900,
-        oldPrice: 189900,
-        promo: true,
-        sizes: ["36", "37", "38", "39"],
-        image: "nikedunklowceleste36al39.jpeg",
-        images: ["nikedunklowceleste36al39.jpeg"],
-        description: "Diseño clásico urbano en tono celeste y blanco que combina con todo. Acabados limpios, plantilla acolchada para uso diario y suela antideslizante de alta durabilidad.",
-        materials: "Capellada en cuero sintético de alta resistencia • Interior textil acolchado • Suela de caucho cosida",
-        fit: "Horma estándar (pide tu talla habitual)"
-      },
-      {
-        id: 2,
-        brand: "Jordan",
-        name: "Retro Court Negra",
-        price: 185000,
-        oldPrice: null,
-        promo: false,
-        sizes: ["38", "39", "40", "41", "42", "43"],
-        image: "",
-        images: [],
-        description: "Silueta corte clásico inspirada en el baloncesto retro. Ideal para outfits urbanos con presencia, soporte firme en el tobillo y pisada cómoda todo el día.",
-        materials: "Exterior en material sintético texturizado • Lengüeta transpirable • Suela de goma de alto agarre",
-        fit: "Horma estándar (pide tu talla habitual)"
-      }
-    ];
-
-    let selectedBrand = "Todas";
-    let searchTerm = "";
-    let selectedSizes = {};
-    let
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué medios de pago aceptan?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Recibimos pagos mediante Nequi, DaviPlata, Bre-B y PSE, con confirmación directa por WhatsApp para que tu pedido salga despachado sin demoras.
