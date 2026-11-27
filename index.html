@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CALZADOCLICK — Estilo, comodidad y envíos gratis a toda Colombia</title>
+  <title>CALZADOCLICK — Estilo y elegancia</title>
   <style>
     :root {
       --bg: #09070d;
@@ -17,7 +17,6 @@
       --purple-soft: rgba(168, 85, 247, 0.16);
       --border: #2e2444;
       --wa: #25d366;
-      --promo: #f43f5e;
     }
 
     * {
@@ -31,7 +30,7 @@
       background: radial-gradient(circle at top, #1b112e 0%, var(--bg) 55%);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 96px;
+      padding-bottom: 84px;
       min-height: 100vh;
     }
 
@@ -39,9 +38,9 @@
       background: linear-gradient(90deg, #6b21a8, var(--purple), #6b21a8);
       color: #fff;
       text-align: center;
-      font-size: 0.86rem;
-      font-weight: 700;
-      padding: 9px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 12px;
       letter-spacing: 0.3px;
     }
 
@@ -63,8 +62,8 @@
     }
 
     .brand img {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid var(--border);
@@ -99,89 +98,26 @@
     .hero {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 30px 20px 14px;
+      padding: 32px 20px 18px;
       text-align: center;
     }
 
     .hero h2 {
-      font-size: 1.95rem;
+      font-size: 1.9rem;
       margin-bottom: 8px;
     }
 
     .hero p {
       color: var(--muted);
-      max-width: 660px;
+      max-width: 600px;
       margin: 0 auto;
       font-size: 0.96rem;
     }
 
-    .trust-bar {
-      max-width: 1180px;
-      margin: 14px auto 6px;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
-    }
-
-    .trust-item {
-      background: rgba(24, 19, 36, 0.88);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 11px 14px;
-      font-size: 0.82rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .trust-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--purple-bright);
-      flex-shrink: 0;
-    }
-
-    .trust-item strong {
-      display: block;
-      font-size: 0.85rem;
-      color: #fff;
-    }
-
-    .trust-item span {
-      color: var(--muted);
-      font-size: 0.77rem;
-    }
-
-    .controls-wrap {
+    .filters-wrap {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 16px 20px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .search-input {
-      width: 100%;
-      max-width: 450px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    .search-input:focus {
-      border-color: var(--purple-bright);
-    }
-
-    .filters-wrap {
+      padding: 14px 20px 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -211,24 +147,12 @@
       color: #fff;
     }
 
-    .filter-btn.promo-btn {
-      border-color: rgba(244, 63, 94, 0.55);
-      color: #fda4af;
-    }
-
-    .filter-btn.promo-btn.active,
-    .filter-btn.promo-btn:hover {
-      background: var(--promo);
-      border-color: var(--promo);
-      color: #fff;
-    }
-
     .grid {
       max-width: 1180px;
       margin: 0 auto;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 20px;
     }
 
@@ -239,65 +163,29 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s, background 0.2s, border-color 0.2s;
+      transition: transform 0.2s, background 0.2s;
     }
 
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       background: var(--card-hover);
-      border-color: var(--purple-bright);
     }
 
     .card-img-wrap {
-      position: relative;
       width: 100%;
-      height: 230px;
+      height: 220px;
       background: #100c18;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
-      cursor: pointer;
     }
 
     .card-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-
-    .card:hover .card-img-wrap img {
-      transform: scale(1.06);
-    }
-
-    .badge-promo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: var(--promo);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 999px;
-      letter-spacing: 0.4px;
-      z-index: 2;
-    }
-
-    .badge-zoom {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(9, 7, 13, 0.84);
-      border: 1px solid var(--border);
-      color: #fff;
-      font-size: 0.74rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 999px;
-      z-index: 2;
     }
 
     .no-img-placeholder {
@@ -311,7 +199,7 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 10px;
       flex: 1;
     }
 
@@ -324,36 +212,18 @@
     }
 
     .card-title {
-      font-size: 1.06rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      cursor: pointer;
-    }
-
-    .card-title:hover {
-      color: var(--purple-bright);
-    }
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
     }
 
     .card-price {
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #fff;
     }
 
-    .card-old-price {
-      font-size: 0.86rem;
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-
     .sizes-label {
-      font-size: 0.79rem;
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
@@ -380,31 +250,8 @@
       font-weight: 700;
     }
 
-    .card-actions {
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 6px;
-    }
-
-    .detail-btn {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 8px;
-      border-radius: 10px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-
-    .detail-btn:hover {
-      border-color: var(--purple-bright);
-    }
-
     .add-btn {
+      margin-top: auto;
       background: var(--purple);
       color: #fff;
       border: none;
@@ -429,158 +276,14 @@
       border-radius: 16px;
     }
 
-    .product-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.82);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      z-index: 1100;
-      overflow-y: auto;
-    }
-
-    .product-modal-backdrop.open {
-      display: flex;
-    }
-
-    .product-modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      max-width: 920px;
-      width: 100%;
-      max-height: 92vh;
-      overflow-y: auto;
-      position: relative;
-      padding: 22px;
-    }
-
-    .modal-close-top {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      z-index: 5;
-    }
-
-    .product-detail-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    @media (max-width: 740px) {
-      .product-detail-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .zoom-stage {
-      position: relative;
-      width: 100%;
-      height: 360px;
-      background: #0d0914;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: zoom-in;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .zoom-stage img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.15s ease-out;
-      transform-origin: center center;
-    }
-
-    .zoom-hint {
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 8px;
-    }
-
-    .detail-info {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .detail-title {
-      font-size: 1.55rem;
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    .detail-desc {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .specs-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 0.84rem;
-    }
-
-    .specs-box strong {
-      color: #fff;
-    }
-
-    .guarantee-pill {
-      background: rgba(37, 211, 102, 0.12);
-      border: 1px solid rgba(37, 211, 102, 0.35);
-      color: #86efac;
-      padding: 9px 12px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-
-    .detail-cta-group {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-top: 6px;
-    }
-
-    .wa-direct-btn {
-      background: var(--wa);
-      color: #06210f;
-      border: none;
-      padding: 11px;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      font-size: 0.92rem;
-    }
-
+    /* Carrito modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
+      background: rgba(0, 0, 0, 0.7);
       display: none;
       justify-content: flex-end;
-      z-index: 1200;
+      z-index: 1000;
     }
 
     .modal-backdrop.open {
@@ -672,6 +375,7 @@
       font-size: 0.95rem;
     }
 
+    /* Botón flotante WhatsApp */
     .wa-float {
       position: fixed;
       right: 18px;
@@ -691,7 +395,7 @@
 <body>
 
   <div class="top-banner">
-    Envíos GRATIS a todo Colombia • Garantía de 30 días • Pagos con Nequi, DaviPlata, Bre-B y PSE
+    Envíos a todo Colombia • Pagos con Nequi, DaviPlata, Bre-B y PSE
   </div>
 
   <header>
@@ -699,86 +403,44 @@
       <img src="logo.jpeg" alt="Logo CalzadoClick" onerror="this.style.display='none'" />
       <div>
         <h1>CALZADOCLICK</h1>
-        <span>Estilo, calidad garantizada y envío gratis</span>
+        <span>Estilo y elegancia en cada paso</span>
       </div>
     </div>
-    <button type="button" class="cart-btn" onclick="toggleCart(true)">
+    <button class="cart-btn" onclick="toggleCart(true)">
       Carrito (<span id="cart-count">0</span>)
     </button>
   </header>
 
   <section class="hero">
-    <h2>Tu próximo par favorito está aquí</h2>
-    <p>Toca cualquier zapatilla para ver sus detalles con zoom, materiales y disponibilidad. Recibes en la puerta de tu casa con envío 100% gratis a todo Colombia.</p>
+    <h2>Catálogo de Zapatillas</h2>
+    <p>Elige tu marca favorita, selecciona tu talla y haz tu pedido directo por WhatsApp.</p>
   </section>
 
-  <div class="trust-bar">
-    <div class="trust-item">
-      <div class="trust-dot"></div>
-      <div>
-        <strong>Envíos GRATIS a todo Colombia</strong>
-        <span>Despacho rápido y seguro hasta tu ciudad</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-dot"></div>
-      <div>
-        <strong>Garantía real de 30 días</strong>
-        <span>Respaldo total en costuras, pegue y fabricación</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-dot"></div>
-      <div>
-        <strong>Pagos fáciles y seguros</strong>
-        <span>Nequi, DaviPlata, Bre-B, PSE y atención directa</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="controls-wrap">
-    <input
-      type="text"
-      id="search-box"
-      class="search-input"
-      placeholder="Buscar modelo o color (ej. Dunk, Celeste, Retro)..."
-      oninput="handleSearch(this.value)"
-    />
-    <div class="filters-wrap" id="filters">
-      <button type="button" class="filter-btn active" data-brand="Todas">Todas</button>
-      <button type="button" class="filter-btn promo-btn" data-brand="PROMOCIONES">PROMOCIONES</button>
-      <button type="button" class="filter-btn" data-brand="Nike">Nike</button>
-      <button type="button" class="filter-btn" data-brand="Jordan">Jordan</button>
-      <button type="button" class="filter-btn" data-brand="Adidas">Adidas</button>
-      <button type="button" class="filter-btn" data-brand="Puma">Puma</button>
-      <button type="button" class="filter-btn" data-brand="Reebok">Reebok</button>
-    </div>
+  <div class="filters-wrap" id="filters">
+    <button class="filter-btn active" data-brand="Todas">Todas</button>
+    <button class="filter-btn" data-brand="Nike">Nike</button>
+    <button class="filter-btn" data-brand="Jordan">Jordan</button>
+    <button class="filter-btn" data-brand="Adidas">Adidas</button>
+    <button class="filter-btn" data-brand="Puma">Puma</button>
+    <button class="filter-btn" data-brand="Reebok">Reebok</button>
   </div>
 
   <main class="grid" id="catalog"></main>
-
-  <div class="product-modal-backdrop" id="product-modal" onclick="if(event.target === this) closeProductModal()">
-    <div class="product-modal" id="product-modal-content"></div>
-  </div>
 
   <div class="modal-backdrop" id="cart-modal" onclick="if(event.target === this) toggleCart(false)">
     <aside class="drawer">
       <div class="drawer-top">
         <h2>Tu Pedido</h2>
-        <button type="button" class="close-btn" onclick="toggleCart(false)">X</button>
+        <button class="close-btn" onclick="toggleCart(false)">X</button>
       </div>
       <div id="cart-items"></div>
       <div class="summary-box">
         <div class="summary-row">
-          <span>Envío a todo Colombia</span>
-          <span style="color: #86efac;">GRATIS</span>
-        </div>
-        <div class="summary-row">
           <span>Subtotal</span>
           <span id="cart-subtotal">$0</span>
         </div>
-        <button type="button" class="checkout-btn" onclick="sendWhatsAppOrder()">
-          Finalizar pedido por WhatsApp
+        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
+          Pedir por WhatsApp
         </button>
       </div>
     </aside>
@@ -786,7 +448,7 @@
 
   <a
     class="wa-float"
-    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20quiero%20asesor%C3%ADa%20sobre%20las%20zapatillas%2C%20tallas%20y%20env%C3%ADo%20gratis"
+    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20tengo%20una%20consulta%20sobre%20las%20zapatillas%20y%20los%20env%C3%ADos"
     target="_blank"
     rel="noopener"
   >
@@ -796,26 +458,177 @@
   <script>
     const WHATSAPP_NUMBER = "573206466252";
 
-    // Una sola foto por producto en `image`
-    // Para poner un modelo en PROMOCIONES, usa promo: true y oldPrice con el precio anterior
+    // Edita brand ("Nike", "Jordan", "Adidas", "Puma", "Reebok"), name, price, sizes e image
     const PRODUCTS = [
       {
         id: 1,
         brand: "Nike",
         name: "Nike Dunk Low Celeste",
         price: 159900,
-        oldPrice: 189900,
-        promo: true,
         sizes: ["36", "37", "38", "39"],
-        image: "nikedunklowceleste36al39.jpeg",
-        description: "Diseño clásico urbano en tono celeste y blanco que combina con todo. Acabados limpios, plantilla acolchada para uso diario y suela antideslizante de alta durabilidad.",
-        materials: "Capellada en cuero sintético de alta resistencia • Interior textil acolchado • Suela de caucho cosida",
-        fit: "Horma estándar (pide tu talla habitual)"
+        image: "nikedunklowceleste36al39.jpeg"
       },
       {
         id: 2,
         brand: "Jordan",
         name: "Retro Court Negra",
         price: 185000,
-        oldPrice: null,
-        promo: false,
+        sizes: ["38", "39", "40", "41", "42", "43"],
+        image: ""
+      }
+    ];
+
+    let selectedBrand = "Todas";
+    let selectedSizes = {};
+    let cart = [];
+
+    function formatCOP(value) {
+      return "$" + Number(value).toLocaleString("es-CO");
+    }
+
+    function selectSize(productId, size) {
+      selectedSizes[productId] = size;
+      renderCatalog();
+    }
+
+    function renderCatalog() {
+      const catalog = document.getElementById("catalog");
+      const filtered = selectedBrand === "Todas"
+        ? PRODUCTS
+        : PRODUCTS.filter(p => p.brand.toLowerCase() === selectedBrand.toLowerCase());
+
+      if (filtered.length === 0) {
+        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos cargados en la marca <strong>${selectedBrand}</strong>.</div>`;
+        return;
+      }
+
+      catalog.innerHTML = filtered.map(product => {
+        const currentSize = selectedSizes[product.id] || product.sizes[0];
+        const imageHTML = product.image
+          ? `<img src="${product.image}" alt="${product.name}" onerror="this.parentElement.innerHTML='<div class=\\'no-img-placeholder\\'>Foto no disponible (${product.image})</div>'" />`
+          : `<div class="no-img-placeholder">Foto próximamente</div>`;
+
+        const sizesHTML = product.sizes.map(size => `
+          <button
+            type="button"
+            class="size-chip ${currentSize === size ? "selected" : ""}"
+            onclick="selectSize(${product.id}, '${size}')"
+          >${size}</button>
+        `).join("");
+
+        return `
+          <article class="card">
+            <div class="card-img-wrap">
+              ${imageHTML}
+            </div>
+            <div class="card-body">
+              <div class="card-brand">${product.brand}</div>
+              <div class="card-title">${product.name}</div>
+              <div class="card-price">${formatCOP(product.price)}</div>
+              <div class="sizes-label">Talla seleccionada: <strong>${currentSize}</strong></div>
+              <div class="sizes-list">${sizesHTML}</div>
+              <button type="button" class="add-btn" onclick="addToCart(${product.id})">
+                Agregar al carrito
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function setupFilters() {
+      const buttons = document.querySelectorAll(".filter-btn");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedBrand = btn.getAttribute("data-brand");
+          renderCatalog();
+        });
+      });
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      const size = selectedSizes[productId] || product.sizes[0];
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        size: size
+      });
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById("cart-count");
+      const itemsEl = document.getElementById("cart-items");
+      const subtotalEl = document.getElementById("cart-subtotal");
+
+      countEl.textContent = cart.length;
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `<p style="color: var(--muted); font-size: 0.9rem;">Tu carrito está vacío.</p>`;
+        subtotalEl.textContent = "$0";
+        return;
+      }
+
+      let total = 0;
+      itemsEl.innerHTML = cart.map((item, idx) => {
+        total += item.price;
+        return `
+          <div class="cart-item">
+            <div>
+              <strong>${item.name}</strong><br />
+              <span style="color: var(--muted);">Talla ${item.size} • ${formatCOP(item.price)}</span>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(${idx})">Quitar</button>
+          </div>
+        `;
+      }).join("");
+
+      subtotalEl.textContent = formatCOP(total);
+    }
+
+    function toggleCart(open) {
+      const modal = document.getElementById("cart-modal");
+      if (open) {
+        modal.classList.add("open");
+      } else {
+        modal.classList.remove("open");
+      }
+    }
+
+    function sendWhatsAppOrder() {
+      if (cart.length === 0) {
+        alert("Agrega al menos una zapatilla al carrito.");
+        return;
+      }
+      let total = 0;
+      const lines = cart.map((item, i) => {
+        total += item.price;
+        return `${i + 1}. ${item.name} (Talla ${item.size}) - ${formatCOP(item.price)}`;
+      });
+
+      const message =
+        `Hola CalzadoClick, quiero hacer este pedido:\n\n` +
+        lines.join("\n") +
+        `\n\nTotal: ${formatCOP(total)}`;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+
+    setupFilters();
+    updateCartUI();
+    renderCatalog();
+  </script>
+</body>
+</html>
