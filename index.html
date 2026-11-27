@@ -31,311 +31,259 @@
       color: var(--text);
       line-height: 1.5;
       padding-bottom: 84px;
+      min-height: 100vh;
     }
 
     .top-banner {
-      background: linear-gradient(90deg, #581c87, #7e22ce, #581c87);
-      color: #ffffff;
+      background: linear-gradient(90deg, #6b21a8, var(--purple), #6b21a8);
+      color: #fff;
       text-align: center;
-      padding: 8px 14px;
       font-size: 0.85rem;
       font-weight: 600;
+      padding: 8px 12px;
       letter-spacing: 0.3px;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 25;
-      background: rgba(12, 9, 18, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 18px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
+    .brand img {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
       object-fit: cover;
-      border: 1px solid rgba(168, 85, 247, 0.5);
-      background: #181324;
+      border: 1px solid var(--border);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
+    .brand h1 {
+      font-size: 1.25rem;
+      letter-spacing: 0.6px;
     }
 
-    .brand-name {
-      font-size: 1.12rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #ffffff;
-      line-height: 1.15;
-    }
-
-    .brand-name span {
-      color: var(--purple-bright);
-    }
-
-    .brand-slogan {
-      font-size: 0.75rem;
-      color: #d8b4fe;
-      font-style: italic;
+    .brand span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
     }
 
     .cart-btn {
-      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
-      color: #ffffff;
+      background: var(--purple);
+      color: #fff;
       border: none;
-      padding: 10px 15px;
+      padding: 10px 16px;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.9rem;
       cursor: pointer;
-      white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(147, 51, 234, 0.35);
+      transition: background 0.2s;
+    }
+
+    .cart-btn:hover {
+      background: var(--purple-bright);
     }
 
     .hero {
-      text-align: center;
-      max-width: 760px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 30px 18px 18px;
+      padding: 32px 20px 18px;
+      text-align: center;
     }
 
-    .badge-shipping {
-      display: inline-block;
-      background: var(--purple-soft);
-      border: 1px solid rgba(168, 85, 247, 0.45);
-      color: #e9d5ff;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.65rem, 4.5vw, 2.45rem);
-      line-height: 1.18;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .hero h1 span {
-      color: var(--purple-bright);
+    .hero h2 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
     }
 
     .hero p {
       color: var(--muted);
-      font-size: 0.98rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.96rem;
     }
 
-    /* Filtros y marcas */
     .filters-wrap {
-      max-width: 1120px;
-      margin: 12px auto 20px;
-      padding: 0 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .brand-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .brand-pill {
-      background: var(--surface);
-      color: #e9d5ff;
-      border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .brand-pill:hover {
-      border-color: var(--purple-bright);
-    }
-
-    .brand-pill.active {
-      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
-      color: #ffffff;
-      border-color: transparent;
-    }
-
-    .toolbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 20px 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      align-items: center;
+      justify-content: center;
     }
 
-    .search-input {
-      flex: 1 1 220px;
-      min-width: 180px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+    .filter-btn {
       background: var(--surface);
-      color: var(--text);
-      font-size: 0.92rem;
-    }
-
-    .select-filter {
-      flex: 0 1 190px;
-      min-width: 145px;
-      padding: 10px 12px;
-      border-radius: 10px;
+      color: var(--muted);
       border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      font-size: 0.92rem;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .search-input:focus, .select-filter:focus, select:focus, input:focus {
-      outline: none;
+    .filter-btn:hover {
       border-color: var(--purple-bright);
+      color: var(--text);
     }
 
-    /* Catálogo */
+    .filter-btn.active {
+      background: var(--purple);
+      border-color: var(--purple-bright);
+      color: #fff;
+    }
+
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-      gap: 16px;
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 18px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 14px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 11px;
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s, background 0.2s;
     }
 
     .card:hover {
       transform: translateY(-3px);
-      border-color: var(--purple-bright);
       background: var(--card-hover);
     }
 
-    .img-box {
-      position: relative;
-      background: linear-gradient(145deg, #241838, #120d1d);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      border-radius: 12px;
-      height: 175px;
+    .card-img-wrap {
+      width: 100%;
+      height: 220px;
+      background: #100c18;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 12px;
-      color: #d8b4fe;
-      font-size: 0.88rem;
       overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
 
-    .img-box img {
+    .card-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 10px;
     }
 
-    .free-tag {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(147, 51, 234, 0.92);
-      color: #ffffff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 9px;
-      border-radius: 999px;
+    .no-img-placeholder {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 16px;
     }
 
-    .brand-tag {
-      display: inline-block;
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .card-brand {
       font-size: 0.75rem;
-      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #d8b4fe;
-      margin-bottom: 2px;
+      letter-spacing: 1px;
+      color: var(--purple-bright);
+      font-weight: 700;
     }
 
     .card-title {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #ffffff;
     }
 
-    .price {
-      font-size: 1.2rem;
+    .card-price {
+      font-size: 1.15rem;
       font-weight: 800;
-      color: #e9d5ff;
-      margin-top: 4px;
+      color: #fff;
     }
 
-    select, input {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+    .sizes-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .sizes-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .size-chip {
       background: var(--surface);
+      border: 1px solid var(--border);
       color: var(--text);
-      font-size: 0.92rem;
-    }
-
-    .add-btn {
-      width: 100%;
-      padding: 11px;
-      border-radius: 10px;
-      border: none;
-      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.92rem;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
       cursor: pointer;
     }
 
-    .add-btn:hover {
-      filter: brightness(1.08);
+    .size-chip.selected {
+      background: var(--purple-soft);
+      border-color: var(--purple-bright);
+      color: #fff;
+      font-weight: 700;
     }
 
-    /* Carrito */
+    .add-btn {
+      margin-top: auto;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .add-btn:hover {
+      background: var(--purple-bright);
+    }
+
+    .empty-msg {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    /* Carrito modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(5, 3, 10, 0.8);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.7);
       display: none;
       justify-content: flex-end;
-      z-index: 45;
+      z-index: 1000;
     }
 
     .modal-backdrop.open {
@@ -343,214 +291,119 @@
     }
 
     .drawer {
-      background: var(--surface);
       width: 100%;
-      max-width: 430px;
+      max-width: 390px;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
       height: 100%;
       padding: 20px;
-      overflow-y: auto;
-      border-left: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .drawer-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       border-bottom: 1px solid var(--border);
       padding-bottom: 12px;
     }
 
     .close-btn {
-      background: var(--card);
+      background: transparent;
       border: 1px solid var(--border);
       color: var(--text);
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
-      font-size: 1.1rem;
       cursor: pointer;
+      font-weight: 700;
+    }
+
+    #cart-items {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .cart-item {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
       padding: 10px 12px;
+      border-radius: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      font-size: 0.88rem;
     }
 
     .remove-btn {
-      background: rgba(239, 68, 68, 0.16);
-      color: #fca5a5;
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      border-radius: 8px;
-      padding: 5px 9px;
+      background: transparent;
+      border: none;
+      color: #f87171;
       cursor: pointer;
-      font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .summary-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      font-size: 0.92rem;
+      gap: 12px;
     }
 
     .summary-row {
       display: flex;
       justify-content: space-between;
-    }
-
-    .free-highlight {
-      color: #d8b4fe;
       font-weight: 700;
-    }
-
-    .total-row {
-      border-top: 1px solid var(--border);
-      padding-top: 8px;
-      margin-top: 4px;
       font-size: 1.05rem;
-      font-weight: 800;
-      color: #ffffff;
     }
 
-    .field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .field-group label {
-      font-size: 0.85rem;
-      color: #e9d5ff;
-      font-weight: 600;
-    }
-
-    .pay-box {
-      background: var(--card);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .pay-box strong {
-      color: #ffffff;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .copy-btn {
-      margin-top: 8px;
-      background: var(--purple-soft);
-      color: #e9d5ff;
-      border: 1px solid rgba(168, 85, 247, 0.45);
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .wa-order-btn {
-      width: 100%;
-      padding: 13px;
-      border-radius: 12px;
-      border: none;
+    .checkout-btn {
       background: var(--wa);
-      color: #052e16;
+      color: #06210f;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
       font-weight: 800;
-      font-size: 0.98rem;
       cursor: pointer;
+      font-size: 0.95rem;
     }
 
+    /* Botón flotante WhatsApp */
     .wa-float {
       position: fixed;
-      bottom: 16px;
-      right: 16px;
-      z-index: 30;
+      right: 18px;
+      bottom: 18px;
       background: var(--wa);
-      color: #052e16;
+      color: #06210f;
       text-decoration: none;
-      padding: 11px 16px;
-      border-radius: 999px;
       font-weight: 800;
-      font-size: 0.88rem;
+      padding: 12px 18px;
+      border-radius: 999px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    @media (max-width: 600px) {
-      .brand-logo {
-        width: 36px;
-        height: 36px;
-      }
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 0 12px;
-      }
-      .card {
-        padding: 10px;
-        border-radius: 12px;
-        gap: 8px;
-      }
-      .img-box {
-        height: 128px;
-      }
-      .card-title {
-        font-size: 0.92rem;
-      }
-      .price {
-        font-size: 1rem;
-      }
-      select, .add-btn, .select-filter {
-        font-size: 0.82rem;
-        padding: 8px;
-      }
-      .wa-float {
-        padding: 10px 14px;
-        font-size: 0.8rem;
-      }
-      .drawer {
-        max-width: 100%;
-      }
+      z-index: 900;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
   <div class="top-banner">
-    ENVÍOS GRATIS EN TODA COLOMBIA • Nequi, DaviPlata, Llave Bre-B, PSE y Addi
+    Envíos a todo Colombia • Pagos con Nequi, DaviPlata, Bre-B y PSE
   </div>
 
   <header>
     <div class="brand">
-      <img
-        src="logo.jpeg"
-        alt="Logo CalzadoClick"
-        class="brand-logo"
-        onerror="this.style.display='none'"
-      />
-      <div class="brand-text">
-        <div class="brand-name">CALZADO<span>CLICK</span></div>
-        <div class="brand-slogan">Estilo y elegancia</div>
+      <img src="logo.jpeg" alt="Logo CalzadoClick" onerror="this.style.display='none'" />
+      <div>
+        <h1>CALZADOCLICK</h1>
+        <span>Estilo y elegancia en cada paso</span>
       </div>
     </div>
     <button class="cart-btn" onclick="toggleCart(true)">
@@ -559,49 +412,17 @@
   </header>
 
   <section class="hero">
-    <div class="badge-shipping">Envíos gratis en toda Colombia</div>
-    <h1>Zapatillas con <span>estilo y elegancia</span></h1>
-    <p>Filtra por tu marca favorita, elige tu talla y envía tu pedido directo por WhatsApp.</p>
+    <h2>Catálogo de Zapatillas</h2>
+    <p>Elige tu marca favorita, selecciona tu talla y haz tu pedido directo por WhatsApp.</p>
   </section>
 
-  <div class="filters-wrap">
-    <div class="brand-pills" id="brand-pills">
-      <button type="button" class="brand-pill active" data-brand="" onclick="selectBrand('')">Todas las marcas</button>
-      <button type="button" class="brand-pill" data-brand="Nike" onclick="selectBrand('Nike')">Nike</button>
-      <button type="button" class="brand-pill" data-brand="Jordan" onclick="selectBrand('Jordan')">Jordan</button>
-      <button type="button" class="brand-pill" data-brand="Adidas" onclick="selectBrand('Adidas')">Adidas</button>
-      <button type="button" class="brand-pill" data-brand="Puma" onclick="selectBrand('Puma')">Puma</button>
-      <button type="button" class="brand-pill" data-brand="Reebok" onclick="selectBrand('Reebok')">Reebok</button>
-    </div>
-
-    <div class="toolbar">
-      <input
-        id="search-input"
-        class="search-input"
-        type="text"
-        placeholder="Buscar modelo o marca..."
-        oninput="renderCatalog()"
-      />
-      <select id="brand-select" class="select-filter" onchange="selectBrand(this.value)">
-        <option value="">Todas las marcas</option>
-        <option value="Nike">Nike</option>
-        <option value="Jordan">Jordan</option>
-        <option value="Adidas">Adidas</option>
-        <option value="Puma">Puma</option>
-        <option value="Reebok">Reebok</option>
-      </select>
-      <select id="size-filter" class="select-filter" onchange="renderCatalog()">
-        <option value="">Todas las tallas</option>
-        <option value="36">Talla 36</option>
-        <option value="37">Talla 37</option>
-        <option value="38">Talla 38</option>
-        <option value="39">Talla 39</option>
-        <option value="40">Talla 40</option>
-        <option value="41">Talla 41</option>
-        <option value="42">Talla 42</option>
-        <option value="43">Talla 43</option>
-      </select>
-    </div>
+  <div class="filters-wrap" id="filters">
+    <button class="filter-btn active" data-brand="Todas">Todas</button>
+    <button class="filter-btn" data-brand="Nike">Nike</button>
+    <button class="filter-btn" data-brand="Jordan">Jordan</button>
+    <button class="filter-btn" data-brand="Adidas">Adidas</button>
+    <button class="filter-btn" data-brand="Puma">Puma</button>
+    <button class="filter-btn" data-brand="Reebok">Reebok</button>
   </div>
 
   <main class="grid" id="catalog"></main>
@@ -610,91 +431,34 @@
     <aside class="drawer">
       <div class="drawer-top">
         <h2>Tu Pedido</h2>
-        <button class="close-btn" onclick="toggleCart(false)">✕</button>
+        <button class="close-btn" onclick="toggleCart(false)">X</button>
       </div>
-
       <div id="cart-items"></div>
-
       <div class="summary-box">
         <div class="summary-row">
           <span>Subtotal</span>
           <span id="cart-subtotal">$0</span>
         </div>
-        <div class="summary-row">
-          <span>Envíos en Colombia</span>
-          <span class="free-highlight">GRATIS</span>
-        </div>
-        <div class="summary-row total-row">
-          <span>Total a pagar</span>
-          <span id="cart-total">$0</span>
-        </div>
+        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
+          Pedir por WhatsApp
+        </button>
       </div>
-
-      <div class="field-group">
-        <label for="customer-name">Tu nombre</label>
-        <input id="customer-name" type="text" placeholder="Ej. Camila Ramírez" />
-      </div>
-
-      <div class="field-group">
-        <label for="customer-city">Ciudad / Municipio (Colombia)</label>
-        <input id="customer-city" type="text" placeholder="Ej. Cali, Bogotá, Medellín, Jamundí..." />
-      </div>
-
-      <div class="field-group">
-        <label for="payment-method">Método de pago</label>
-        <select id="payment-method" onchange="renderPaymentInfo()">
-          <option value="Nequi">Nequi</option>
-          <option value="DaviPlata">DaviPlata</option>
-          <option value="Llave Bre-B">Llave Bre-B</option>
-          <option value="PSE">PSE</option>
-          <option value="Addi">Addi</option>
-        </select>
-      </div>
-
-      <div class="pay-box" id="payment-info"></div>
-
-      <button class="wa-order-btn" onclick="sendOrderWhatsApp()">
-        Confirmar pedido por WhatsApp
-      </button>
     </aside>
   </div>
 
   <a
     class="wa-float"
-    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20tengo%20una%20pregunta%20sobre%20las%20zapatillas%20y%20los%20env%C3%ADos%20gratis%20en%20Colombia."
+    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20tengo%20una%20consulta%20sobre%20las%20zapatillas%20y%20los%20env%C3%ADos"
     target="_blank"
     rel="noopener"
   >
-    WhatsApp +57 320 646 6252
+    WhatsApp • 320 646 6252
   </a>
 
   <script>
     const WHATSAPP_NUMBER = "573206466252";
 
-    const PAYMENT_INFO = {
-      "Nequi": {
-        text: "Transfiere a Nequi <strong>3147761605</strong> y envíanos el comprobante por WhatsApp.",
-        copyValue: "3147761605"
-      },
-      "DaviPlata": {
-        text: "Transfiere a DaviPlata <strong>3147761605</strong> y envíanos el comprobante por WhatsApp.",
-        copyValue: "3147761605"
-      },
-      "Llave Bre-B": {
-        text: "Envía tu pago a la Llave Bre-B <strong>@3147761605</strong> y comparte el comprobante por WhatsApp.",
-        copyValue: "@3147761605"
-      },
-      "PSE": {
-        text: "Al enviar tu pedido por WhatsApp te compartiremos el enlace de pago <strong>PSE</strong>.",
-        copyValue: ""
-      },
-      "Addi": {
-        text: "Al enviar tu pedido por WhatsApp te compartiremos el enlace para pagar en cuotas con <strong>Addi</strong>.",
-        copyValue: ""
-      }
-    };
-
-    // Edita brand ("Nike", "Jordan", "Adidas", "Puma", "Reebok"), name, price, sizes y agrega image: "img/foto.jpg"
+    // Edita brand ("Nike", "Jordan", "Adidas", "Puma", "Reebok"), name, price, sizes e image
     const PRODUCTS = [
       {
         id: 1,
@@ -711,74 +475,160 @@
         price: 185000,
         sizes: ["38", "39", "40", "41", "42", "43"],
         image: ""
-      },
-      {
-        id: 3,
-        brand: "Adidas",
-        name: "Forum Low Lila",
-        price: 170000,
-        sizes: ["36", "37", "38", "39", "40", "41"],
-        image: ""
-      },
-      {
-        id: 4,
-        brand: "Puma",
-        name: "Suede Classic Noir",
-        price: 160000,
-        sizes: ["37", "38", "39", "40", "41", "42"],
-        image: ""
-      },
-      {
-        id: 5,
-        brand: "Reebok",
-        name: "Club C Urbana",
-        price: 150000,
-        sizes: ["37", "38", "39", "40", "41"],
-        image: ""
       }
     ];
 
-    let selectedBrand = "";
+    let selectedBrand = "Todas";
+    let selectedSizes = {};
     let cart = [];
 
-    function selectBrand(brand) {
-      selectedBrand = brand;
-      document.getElementById("brand-select").value = brand;
-      document.querySelectorAll(".brand-pill").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.brand === brand);
-      });
+    function formatCOP(value) {
+      return "$" + Number(value).toLocaleString("es-CO");
+    }
+
+    function selectSize(productId, size) {
+      selectedSizes[productId] = size;
       renderCatalog();
     }
 
-    function formatCOP(val) {
-      return new Intl.NumberFormat("es-CO", {
-        style: "currency",
-        currency: "COP",
-        maximumFractionDigits: 0
-      }).format(val);
-    }
-
     function renderCatalog() {
-      const query = (document.getElementById("search-input").value || "").toLowerCase().trim();
-      const selectedSize = document.getElementById("size-filter").value;
+      const catalog = document.getElementById("catalog");
+      const filtered = selectedBrand === "Todas"
+        ? PRODUCTS
+        : PRODUCTS.filter(p => p.brand.toLowerCase() === selectedBrand.toLowerCase());
 
-      const filtered = PRODUCTS.filter(p => {
-        const matchesBrand = !selectedBrand || p.brand.toLowerCase() === selectedBrand.toLowerCase();
-        const matchesText = !query ||
-          p.name.toLowerCase().includes(query) ||
-          p.brand.toLowerCase().includes(query);
-        const matchesSize = !selectedSize || p.sizes.includes(selectedSize);
-        return matchesBrand && matchesText && matchesSize;
-      });
-
-      const el = document.getElementById("catalog");
       if (filtered.length === 0) {
-        el.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#b4acc9;padding:24px;">No encontramos zapatillas con ese filtro.</p>`;
+        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos cargados en la marca <strong>${selectedBrand}</strong>.</div>`;
         return;
       }
 
-      el.innerHTML = filtered.map(p => {
-        const defaultSize = selectedSize && p.sizes.includes(selectedSize) ? selectedSize : p.sizes[0];
-        const imgContent = p.image
-          ? `<img src="${p.image}" alt="${p.brand} ${p.name}" />`
-          : `<span>Pronto foto:<br><strong>${p.brand} ${p.name}</strong></
+      catalog.innerHTML = filtered.map(product => {
+        const currentSize = selectedSizes[product.id] || product.sizes[0];
+        const imageHTML = product.image
+          ? `<img src="${product.image}" alt="${product.name}" onerror="this.parentElement.innerHTML='<div class=\\'no-img-placeholder\\'>Foto no disponible (${product.image})</div>'" />`
+          : `<div class="no-img-placeholder">Foto próximamente</div>`;
+
+        const sizesHTML = product.sizes.map(size => `
+          <button
+            type="button"
+            class="size-chip ${currentSize === size ? "selected" : ""}"
+            onclick="selectSize(${product.id}, '${size}')"
+          >${size}</button>
+        `).join("");
+
+        return `
+          <article class="card">
+            <div class="card-img-wrap">
+              ${imageHTML}
+            </div>
+            <div class="card-body">
+              <div class="card-brand">${product.brand}</div>
+              <div class="card-title">${product.name}</div>
+              <div class="card-price">${formatCOP(product.price)}</div>
+              <div class="sizes-label">Talla seleccionada: <strong>${currentSize}</strong></div>
+              <div class="sizes-list">${sizesHTML}</div>
+              <button type="button" class="add-btn" onclick="addToCart(${product.id})">
+                Agregar al carrito
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function setupFilters() {
+      const buttons = document.querySelectorAll(".filter-btn");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedBrand = btn.getAttribute("data-brand");
+          renderCatalog();
+        });
+      });
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      const size = selectedSizes[productId] || product.sizes[0];
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        size: size
+      });
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById("cart-count");
+      const itemsEl = document.getElementById("cart-items");
+      const subtotalEl = document.getElementById("cart-subtotal");
+
+      countEl.textContent = cart.length;
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `<p style="color: var(--muted); font-size: 0.9rem;">Tu carrito está vacío.</p>`;
+        subtotalEl.textContent = "$0";
+        return;
+      }
+
+      let total = 0;
+      itemsEl.innerHTML = cart.map((item, idx) => {
+        total += item.price;
+        return `
+          <div class="cart-item">
+            <div>
+              <strong>${item.name}</strong><br />
+              <span style="color: var(--muted);">Talla ${item.size} • ${formatCOP(item.price)}</span>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(${idx})">Quitar</button>
+          </div>
+        `;
+      }).join("");
+
+      subtotalEl.textContent = formatCOP(total);
+    }
+
+    function toggleCart(open) {
+      const modal = document.getElementById("cart-modal");
+      if (open) {
+        modal.classList.add("open");
+      } else {
+        modal.classList.remove("open");
+      }
+    }
+
+    function sendWhatsAppOrder() {
+      if (cart.length === 0) {
+        alert("Agrega al menos una zapatilla al carrito.");
+        return;
+      }
+      let total = 0;
+      const lines = cart.map((item, i) => {
+        total += item.price;
+        return `${i + 1}. ${item.name} (Talla ${item.size}) - ${formatCOP(item.price)}`;
+      });
+
+      const message =
+        `Hola CalzadoClick, quiero hacer este pedido:\n\n` +
+        lines.join("\n") +
+        `\n\nTotal: ${formatCOP(total)}`;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+
+    setupFilters();
+    updateCartUI();
+    renderCatalog();
+  </script>
+</body>
+</html>
