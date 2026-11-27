@@ -429,79 +429,6 @@
       border-radius: 16px;
     }
 
-    .faq-section {
-      max-width: 900px;
-      margin: 48px auto 0;
-      padding: 0 20px;
-    }
-
-    .faq-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .faq-header h2 {
-      font-size: 1.55rem;
-      margin-bottom: 6px;
-    }
-
-    .faq-header p {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .faq-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 15px 18px;
-      text-align: left;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .faq-question:hover {
-      color: var(--purple-bright);
-    }
-
-    .faq-icon {
-      color: var(--purple-bright);
-      font-size: 1.15rem;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .faq-answer {
-      display: none;
-      padding: 12px 18px 16px;
-      color: var(--muted);
-      font-size: 0.89rem;
-      border-top: 1px solid rgba(46, 36, 68, 0.55);
-    }
-
-    .faq-item.open .faq-answer {
-      display: block;
-    }
-
     .product-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -830,46 +757,65 @@
 
   <main class="grid" id="catalog"></main>
 
-  <section class="faq-section" id="faq">
-    <div class="faq-header">
-      <h2>Preguntas Frecuentes</h2>
-      <p>Todo claro antes de pedir tu par en CalzadoClick</p>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          ¿El envío a todo Colombia es realmente gratis?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Sí. Todos los pedidos realizados en CalzadoClick cuentan con envío gratis a cualquier ciudad o municipio con cobertura en Colombia, sin cargos ocultos al finalizar tu compra.
-        </div>
-      </div>
+  <div class="product-modal-backdrop" id="product-modal" onclick="if(event.target === this) closeProductModal()">
+    <div class="product-modal" id="product-modal-content"></div>
+  </div>
 
-      <div class="faq-item">
-        <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          ¿Cómo funciona la garantía de 30 días?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Cuentas con 30 días de garantía por defectos de fabricación (como despegue o fallas de costura en uso normal). Escríbenos por WhatsApp con tu número de pedido y fotos o video para ayudarte de inmediato.
-        </div>
+  <div class="modal-backdrop" id="cart-modal" onclick="if(event.target === this) toggleCart(false)">
+    <aside class="drawer">
+      <div class="drawer-top">
+        <h2>Tu Pedido</h2>
+        <button type="button" class="close-btn" onclick="toggleCart(false)">X</button>
       </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          ¿Cómo elijo bien mi talla y qué pasa si necesito cambio?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          La mayoría de nuestras referencias manejan horma estándar; si estás entre dos tallas o tienes duda sobre el ajuste, escríbenos antes de pagar y te asesoramos. Si necesitas cambio de talla, consúltanos por WhatsApp para coordinarlo según disponibilidad.
+      <div id="cart-items"></div>
+      <div class="summary-box">
+        <div class="summary-row">
+          <span>Envío a todo Colombia</span>
+          <span style="color: #86efac;">GRATIS</span>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          ¿Qué medios de pago aceptan?
-          <span class="faq-icon">+</span>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0</span>
+        </div>
+        <button type="button" class="checkout-btn" onclick="sendWhatsAppOrder()">
+          Finalizar pedido por WhatsApp
         </button>
-        <div class="faq-answer">
-          Recibimos pagos mediante Nequi, DaviPlata, Bre-B y PSE, con confirmación directa por WhatsApp para que tu pedido salga despachado sin demoras.
+      </div>
+    </aside>
+  </div>
+
+  <a
+    class="wa-float"
+    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20quiero%20asesor%C3%ADa%20sobre%20las%20zapatillas%2C%20tallas%20y%20env%C3%ADo%20gratis"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp • 320 646 6252
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "573206466252";
+
+    // Una sola foto por producto en `image`
+    // Para poner un modelo en PROMOCIONES, usa promo: true y oldPrice con el precio anterior
+    const PRODUCTS = [
+      {
+        id: 1,
+        brand: "Nike",
+        name: "Nike Dunk Low Celeste",
+        price: 159900,
+        oldPrice: 189900,
+        promo: true,
+        sizes: ["36", "37", "38", "39"],
+        image: "nikedunklowceleste36al39.jpeg",
+        description: "Diseño clásico urbano en tono celeste y blanco que combina con todo. Acabados limpios, plantilla acolchada para uso diario y suela antideslizante de alta durabilidad.",
+        materials: "Capellada en cuero sintético de alta resistencia • Interior textil acolchado • Suela de caucho cosida",
+        fit: "Horma estándar (pide tu talla habitual)"
+      },
+      {
+        id: 2,
+        brand: "Jordan",
+        name: "Retro Court Negra",
+        price: 185000,
+        oldPrice: null,
+        promo: false,
