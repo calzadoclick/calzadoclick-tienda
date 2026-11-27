@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CALZADOCLICK — Estilo, comodidad y envíos gratis a toda Colombia</title>
+  <title>CALZADOCLICK — Estilo y elegancia</title>
   <style>
     :root {
       --bg: #09070d;
       --surface: #120e1a;
+      --surface-2: #171222;
       --card: #181324;
-      --card-hover: #201930;
+      --card-hover: #211933;
       --text: #f5f3ff;
       --muted: #b4acc9;
       --purple: #9333ea;
@@ -17,7 +18,7 @@
       --purple-soft: rgba(168, 85, 247, 0.16);
       --border: #2e2444;
       --wa: #25d366;
-      --promo: #f43f5e;
+      --ok: #34d399;
     }
 
     * {
@@ -31,7 +32,7 @@
       background: radial-gradient(circle at top, #1b112e 0%, var(--bg) 55%);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 96px;
+      padding-bottom: 88px;
       min-height: 100vh;
     }
 
@@ -39,9 +40,9 @@
       background: linear-gradient(90deg, #6b21a8, var(--purple), #6b21a8);
       color: #fff;
       text-align: center;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      padding: 9px 12px;
+      padding: 8px 12px;
       letter-spacing: 0.3px;
     }
 
@@ -63,8 +64,8 @@
     }
 
     .brand img {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid var(--border);
@@ -99,8 +100,20 @@
     .hero {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 30px 20px 14px;
+      padding: 32px 20px 14px;
       text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--purple-soft);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #e9d5ff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
     }
 
     .hero h2 {
@@ -111,77 +124,43 @@
     .hero p {
       color: var(--muted);
       max-width: 660px;
-      margin: 0 auto;
+      margin: 0 auto 18px;
       font-size: 0.96rem;
     }
 
-    .trust-bar {
+    .trust-strip {
       max-width: 1180px;
-      margin: 14px auto 6px;
+      margin: 0 auto 10px;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 10px;
     }
 
     .trust-item {
-      background: rgba(24, 19, 36, 0.88);
+      background: rgba(18, 14, 26, 0.85);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 11px 14px;
-      font-size: 0.82rem;
+      padding: 10px 14px;
+      font-size: 0.84rem;
       color: var(--text);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .trust-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--purple-bright);
+      background: var(--ok);
       flex-shrink: 0;
     }
 
-    .trust-item strong {
-      display: block;
-      font-size: 0.85rem;
-      color: #fff;
-    }
-
-    .trust-item span {
-      color: var(--muted);
-      font-size: 0.77rem;
-    }
-
-    .controls-wrap {
+    .filters-wrap {
       max-width: 1180px;
       margin: 0 auto;
       padding: 16px 20px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .search-input {
-      width: 100%;
-      max-width: 450px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    .search-input:focus {
-      border-color: var(--purple-bright);
-    }
-
-    .filters-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -211,18 +190,6 @@
       color: #fff;
     }
 
-    .filter-btn.promo-btn {
-      border-color: rgba(244, 63, 94, 0.55);
-      color: #fda4af;
-    }
-
-    .filter-btn.promo-btn.active,
-    .filter-btn.promo-btn:hover {
-      background: var(--promo);
-      border-color: var(--promo);
-      color: #fff;
-    }
-
     .grid {
       max-width: 1180px;
       margin: 0 auto;
@@ -243,15 +210,15 @@
     }
 
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       background: var(--card-hover);
-      border-color: var(--purple-bright);
+      border-color: rgba(168, 85, 247, 0.45);
     }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 230px;
+      height: 225px;
       background: #100c18;
       display: flex;
       align-items: center;
@@ -265,39 +232,25 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.35s ease;
+      transition: transform 0.3s ease;
     }
 
-    .card:hover .card-img-wrap img {
-      transform: scale(1.06);
+    .card-img-wrap:hover img {
+      transform: scale(1.05);
     }
 
-    .badge-promo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: var(--promo);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 999px;
-      letter-spacing: 0.4px;
-      z-index: 2;
-    }
-
-    .badge-zoom {
+    .inspect-badge {
       position: absolute;
       bottom: 10px;
       right: 10px;
-      background: rgba(9, 7, 13, 0.84);
+      background: rgba(9, 7, 13, 0.82);
       border: 1px solid var(--border);
       color: #fff;
       font-size: 0.74rem;
-      font-weight: 600;
-      padding: 4px 10px;
+      font-weight: 700;
+      padding: 4px 9px;
       border-radius: 999px;
-      z-index: 2;
+      backdrop-filter: blur(4px);
     }
 
     .no-img-placeholder {
@@ -311,8 +264,15 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 10px;
       flex: 1;
+    }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
     }
 
     .card-brand {
@@ -323,6 +283,15 @@
       font-weight: 700;
     }
 
+    .card-fit {
+      font-size: 0.72rem;
+      color: var(--ok);
+      background: rgba(52, 211, 153, 0.12);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
     .card-title {
       font-size: 1.06rem;
       font-weight: 700;
@@ -330,14 +299,7 @@
     }
 
     .card-title:hover {
-      color: var(--purple-bright);
-    }
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
+      color: #e9d5ff;
     }
 
     .card-price {
@@ -346,14 +308,8 @@
       color: #fff;
     }
 
-    .card-old-price {
-      font-size: 0.86rem;
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-
     .sizes-label {
-      font-size: 0.79rem;
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
@@ -382,41 +338,40 @@
 
     .card-actions {
       margin-top: auto;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr auto;
       gap: 8px;
-      padding-top: 6px;
-    }
-
-    .detail-btn {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 8px;
-      border-radius: 10px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-
-    .detail-btn:hover {
-      border-color: var(--purple-bright);
     }
 
     .add-btn {
       background: var(--purple);
       color: #fff;
       border: none;
-      padding: 10px;
+      padding: 10px 12px;
       border-radius: 10px;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.2s;
+      font-size: 0.88rem;
     }
 
     .add-btn:hover {
       background: var(--purple-bright);
+    }
+
+    .detail-btn {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .detail-btn:hover {
+      border-color: var(--purple-bright);
     }
 
     .empty-msg {
@@ -429,79 +384,7 @@
       border-radius: 16px;
     }
 
-    .faq-section {
-      max-width: 900px;
-      margin: 48px auto 0;
-      padding: 0 20px;
-    }
-
-    .faq-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .faq-header h2 {
-      font-size: 1.55rem;
-      margin-bottom: 6px;
-    }
-
-    .faq-header p {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .faq-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 15px 18px;
-      text-align: left;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .faq-question:hover {
-      color: var(--purple-bright);
-    }
-
-    .faq-icon {
-      color: var(--purple-bright);
-      font-size: 1.15rem;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .faq-answer {
-      display: none;
-      padding: 12px 18px 16px;
-      color: var(--muted);
-      font-size: 0.89rem;
-      border-top: 1px solid rgba(46, 36, 68, 0.55);
-    }
-
-    .faq-item.open .faq-answer {
-      display: block;
-    }
-
+    /* Modal de detalle y zoom de zapatilla */
     .product-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -514,4 +397,436 @@
       overflow-y: auto;
     }
 
-    .product-modal-backdrop.
+    .product-modal-backdrop.open {
+      display: flex;
+    }
+
+    .product-modal {
+      width: 100%;
+      max-width: 880px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 22px;
+      position: relative;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 760px) {
+      .product-modal {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+    }
+
+    .modal-close-abs {
+      position: sticky;
+      top: 0;
+      margin-left: auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 700;
+      z-index: 5;
+    }
+
+    .gallery-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .zoom-stage {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0d0914;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+    }
+
+    .zoom-stage.zoomed {
+      cursor: zoom-out;
+    }
+
+    .zoom-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+      transition: transform 0.15s ease-out;
+    }
+
+    .zoom-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .thumbs-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .thumb-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background: var(--card);
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .thumb-btn.active {
+      border-color: var(--purple-bright);
+    }
+
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .spec-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.86rem;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .spec-label {
+      color: var(--muted);
+    }
+
+    .spec-val {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Carrito modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: flex-end;
+      z-index: 1000;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .drawer {
+      width: 100%;
+      max-width: 390px;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .drawer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    #cart-items {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cart-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+    }
+
+    .remove-btn {
+      background: transparent;
+      border: none;
+      color: #f87171;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .summary-box {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .checkout-btn {
+      background: var(--wa);
+      color: #06210f;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* Botón flotante WhatsApp */
+    .wa-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: var(--wa);
+      color: #06210f;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      z-index: 900;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-banner">
+    Envíos gratis a todo Colombia • Pagos con Nequi, DaviPlata, Bre-B y PSE
+  </div>
+
+  <header>
+    <div class="brand">
+      <img src="logo.jpeg" alt="Logo CalzadoClick" onerror="this.style.display='none'" />
+      <div>
+        <h1>CALZADOCLICK</h1>
+        <span>Estilo y elegancia en cada paso</span>
+      </div>
+    </div>
+    <button class="cart-btn" onclick="toggleCart(true)">
+      Carrito (<span id="cart-count">0</span>)
+    </button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-tag">Selección urbana • Atención directa</div>
+    <h2>Catálogo de Zapatillas</h2>
+    <p>Explora cada par a detalle, haz zoom en sus acabados y asegura tu talla con envío gratis a todo el país.</p>
+  </section>
+
+  <div class="trust-strip">
+    <div class="trust-item"><span class="trust-dot"></span>Envíos gratis a todo Colombia</div>
+    <div class="trust-item"><span class="trust-dot"></span>Revisa costuras y detalles con zoom</div>
+    <div class="trust-item"><span class="trust-dot"></span>Acompañamiento por talla antes de enviar</div>
+    <div class="trust-item"><span class="trust-dot"></span>Nequi, DaviPlata, Bre-B y PSE</div>
+  </div>
+
+  <div class="filters-wrap" id="filters">
+    <button class="filter-btn active" data-brand="Todas">Todas</button>
+    <button class="filter-btn" data-brand="Nike">Nike</button>
+    <button class="filter-btn" data-brand="Jordan">Jordan</button>
+    <button class="filter-btn" data-brand="Adidas">Adidas</button>
+    <button class="filter-btn" data-brand="Puma">Puma</button>
+    <button class="filter-btn" data-brand="Reebok">Reebok</button>
+  </div>
+
+  <main class="grid" id="catalog"></main>
+
+  <!-- Modal de vista detallada + zoom -->
+  <div class="product-modal-backdrop" id="product-modal" onclick="if(event.target === this) closeProductModal()">
+    <div class="product-modal" id="product-modal-content"></div>
+  </div>
+
+  <!-- Carrito lateral -->
+  <div class="modal-backdrop" id="cart-modal" onclick="if(event.target === this) toggleCart(false)">
+    <aside class="drawer">
+      <div class="drawer-top">
+        <h2>Tu Pedido</h2>
+        <button class="close-btn" onclick="toggleCart(false)">X</button>
+      </div>
+      <div id="cart-items"></div>
+      <div class="summary-box">
+        <div class="summary-row">
+          <span>Envío</span>
+          <span style="color: var(--ok);">GRATIS</span>
+        </div>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0</span>
+        </div>
+        <button class="checkout-btn" onclick="sendWhatsAppOrder()">
+          Asegurar pedido por WhatsApp
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <a
+    class="wa-float"
+    href="https://wa.me/573206466252?text=Hola%20CalzadoClick%2C%20quiero%20asesor%C3%ADa%20sobre%20las%20zapatillas%20y%20el%20env%C3%ADo%20gratis"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp • 320 646 6252
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "573206466252";
+
+    // Puedes usar "image" para una foto o "images": ["foto1.jpeg", "foto2.jpeg"] para galería
+    const PRODUCTS = [
+      {
+        id: 1,
+        brand: "Nike",
+        name: "Nike Dunk Low Celeste",
+        price: 159900,
+        sizes: ["36", "37", "38", "39"],
+        image: "nikedunklowceleste36al39.jpeg",
+        images: ["nikedunklowceleste36al39.jpeg"],
+        fit: "Horma exacta",
+        upper: "Cuero sintético liso con paneles en tono celeste",
+        sole: "Suela de caucho antideslizante cosida en borde",
+        description: "Diseño clásico de perfil bajo pensado para uso diario. Combina fácilmente con jeans, cargo o conjuntos casuales manteniendo estructura firme en el empeine."
+      },
+      {
+        id: 2,
+        brand: "Jordan",
+        name: "Retro Court Negra",
+        price: 185000,
+        sizes: ["38", "39", "40", "41", "42", "43"],
+        image: "",
+        images: [],
+        fit: "Horma normal",
+        upper: "Capellada negra con refuerzos laterales estructurados",
+        sole: "Suela de alta resistencia con buen agarre urbano",
+        description: "Silueta de inspiración cancha en tono negro versátil. Ideal para quienes buscan presencia sobria y comodidad durante jornadas largas."
+      }
+    ];
+
+    let selectedBrand = "Todas";
+    let selectedSizes = {};
+    let cart = [];
+    let activeModalProductId = null;
+    let activeModalImage = "";
+    let isZoomLocked = false;
+
+    function formatCOP(value) {
+      return "$" + Number(value).toLocaleString("es-CO");
+    }
+
+    function getProductImages(product) {
+      if (Array.isArray(product.images) && product.images.length > 0) {
+        return product.images.filter(Boolean);
+      }
+      return product.image ? [product.image] : [];
+    }
+
+    function selectSize(productId, size) {
+      selectedSizes[productId] = size;
+      renderCatalog();
+      if (activeModalProductId === productId) {
+        renderProductModalContent();
+      }
+    }
+
+    function renderCatalog() {
+      const catalog = document.getElementById("catalog");
+      const filtered = selectedBrand === "Todas"
+        ? PRODUCTS
+        : PRODUCTS.filter(p => p.brand.toLowerCase() === selectedBrand.toLowerCase());
+
+      if (filtered.length === 0) {
+        catalog.innerHTML = `<div class="empty-msg">Aún no hay modelos cargados en la marca <strong>${selectedBrand}</strong>. Escríbenos por WhatsApp y te avisamos cuando llegue tu talla.</div>`;
+        return;
+      }
+
+      catalog.innerHTML = filtered.map(product => {
+        const currentSize = selectedSizes[product.id] || product.sizes[0];
+        const imgs = getProductImages(product);
+        const mainImg = imgs[0] || "";
+
+        const imageHTML = mainImg
+          ? `<img src="${mainImg}" alt="${product.name}" onerror="this.parentElement.innerHTML='<div class=\\'no-img-placeholder\\'>Foto no disponible (${mainImg})</div>'" />
+             <span class="inspect-badge">Ver y hacer zoom</span>`
+          : `<div class="no-img-placeholder">Foto próximamente<br/><small>Toca para ver ficha</small></div>`;
+
+        const sizesHTML = product.sizes.map(size => `
+          <button
+            type="button"
+            class="size-chip ${currentSize === size ? "selected" : ""}"
+            onclick="selectSize(${product.id}, '${size}')"
+          >${size}</button>
+        `).join("");
+
+        return `
+          <article class="card">
+            <div class="card-img-wrap" onclick="openProductModal(${product.id})">
+              ${imageHTML}
+            </div>
+            <div class="card-body">
+              <div class="card-top-r
